@@ -1,0 +1,602 @@
+{
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/.opencode/opencode.json": {
+    "mtime": 1780596302.5183895,
+    "ast_hash": "e5f74d14a81702b55bdf53b33ec991d7",
+    "semantic_hash": "e5f74d14a81702b55bdf53b33ec991d7"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/.opencode/package.json": {
+    "mtime": 1780591679.987195,
+    "ast_hash": "d3ab821609ec487b22aa5b0027f5f400",
+    "semantic_hash": "d3ab821609ec487b22aa5b0027f5f400"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/.opencode/plugins/graphify.js": {
+    "mtime": 1780597471.3528728,
+    "ast_hash": "64ccd3c03dbfe0980b6095766f5c4e52",
+    "semantic_hash": "64ccd3c03dbfe0980b6095766f5c4e52"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/App.razor": {
+    "mtime": 1780591543.6794012,
+    "ast_hash": "0a992ae2cc4cb6542a0d7ea52408c1a3",
+    "semantic_hash": "0a992ae2cc4cb6542a0d7ea52408c1a3"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/AvatarExpo.csproj": {
+    "mtime": 1780591543.6794012,
+    "ast_hash": "a2d955c17ef447f4c4b88cde4be0c8a4",
+    "semantic_hash": "a2d955c17ef447f4c4b88cde4be0c8a4"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/Components/AvatarArm.razor": {
+    "mtime": 1780682365.5002825,
+    "ast_hash": "dd8a753d1e770bb659ae205625b79809",
+    "semantic_hash": "dd8a753d1e770bb659ae205625b79809"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/Components/AvatarHead.razor": {
+    "mtime": 1780682365.5002825,
+    "ast_hash": "3818f1ebd9b1f660c876c57e15691150",
+    "semantic_hash": "3818f1ebd9b1f660c876c57e15691150"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/Components/AvatarRenderer.razor": {
+    "mtime": 1780682365.5002825,
+    "ast_hash": "5f1c678db3f2a76ce771f68411e81de2",
+    "semantic_hash": "5f1c678db3f2a76ce771f68411e81de2"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/Components/AvatarTorso.razor": {
+    "mtime": 1780602861.2730036,
+    "ast_hash": "5ed19dbdec1333d2cd3b550f1d0ce155",
+    "semantic_hash": "5ed19dbdec1333d2cd3b550f1d0ce155"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/Components/CameraPanel.razor": {
+    "mtime": 1780682365.5002825,
+    "ast_hash": "996da8ebe8217ef312dca7e759d66094",
+    "semantic_hash": "996da8ebe8217ef312dca7e759d66094"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/Components/CustomizationPanel.razor": {
+    "mtime": 1780682365.5002825,
+    "ast_hash": "b8dcbfb836b66fbb4635ccca8ed7ba54",
+    "semantic_hash": "b8dcbfb836b66fbb4635ccca8ed7ba54"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/Layout/MainLayout.razor": {
+    "mtime": 1780591543.6794012,
+    "ast_hash": "8ddc617432b756b5f36aaab903d699a1",
+    "semantic_hash": "8ddc617432b756b5f36aaab903d699a1"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/Layout/NavMenu.razor": {
+    "mtime": 1780591543.6794012,
+    "ast_hash": "26e39bb3ae2b803a4631fafb987f2b4c",
+    "semantic_hash": "26e39bb3ae2b803a4631fafb987f2b4c"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/Pages/Index.razor": {
+    "mtime": 1780591543.6794012,
+    "ast_hash": "10111ffad110f0ece77ccbea960c9cd4",
+    "semantic_hash": "10111ffad110f0ece77ccbea960c9cd4"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/Pages/NotFound.razor": {
+    "mtime": 1780591543.6794012,
+    "ast_hash": "d416bdb30b4d47e57209672dee783403",
+    "semantic_hash": "d416bdb30b4d47e57209672dee783403"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/Program.cs": {
+    "mtime": 1780682365.5002825,
+    "ast_hash": "64ca8d813719907292540bf2c41af6c7",
+    "semantic_hash": "64ca8d813719907292540bf2c41af6c7"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/Properties/launchSettings.json": {
+    "mtime": 1780682365.5002825,
+    "ast_hash": "6aecaf9438e26989e53475733574ca4d",
+    "semantic_hash": "6aecaf9438e26989e53475733574ca4d"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/Services/AvatarState.cs": {
+    "mtime": 1780591543.6794012,
+    "ast_hash": "df2a2d3e0bc2366f885253c2f49c4c26",
+    "semantic_hash": "df2a2d3e0bc2366f885253c2f49c4c26"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/Services/CameraService.cs": {
+    "mtime": 1780591543.6794012,
+    "ast_hash": "94af200edf1b32afb2ca6e29db7ac011",
+    "semantic_hash": "94af200edf1b32afb2ca6e29db7ac011"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/Services/Models.cs": {
+    "mtime": 1780682365.5002825,
+    "ast_hash": "8ef284690e84a9ff202b4b8123399109",
+    "semantic_hash": "8ef284690e84a9ff202b4b8123399109"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/Services/TrackingService.cs": {
+    "mtime": 1780598717.4531865,
+    "ast_hash": "501b690c90dc5b7dfa2fedcdb1c581de",
+    "semantic_hash": "501b690c90dc5b7dfa2fedcdb1c581de"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/_Imports.razor": {
+    "mtime": 1780591543.6794012,
+    "ast_hash": "eb204bc3361d6db780f8fb0a5bd2ca42",
+    "semantic_hash": "eb204bc3361d6db780f8fb0a5bd2ca42"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/wwwroot/appsettings.json": {
+    "mtime": 1780591543.6794012,
+    "ast_hash": "7dc3d633c036d9c6d2c96a93b459412b",
+    "semantic_hash": "7dc3d633c036d9c6d2c96a93b459412b"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/wwwroot/js/camera.js": {
+    "mtime": 1780682365.5042825,
+    "ast_hash": "51cfdc111b9d4601da9d0953277c6d02",
+    "semantic_hash": "51cfdc111b9d4601da9d0953277c6d02"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/ProyectoExpoAvatarIA.sln": {
+    "mtime": 1780595588.5785153,
+    "ast_hash": "65a826adf60a566380973cdff0bfd12d",
+    "semantic_hash": "65a826adf60a566380973cdff0bfd12d"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/server/server.py": {
+    "mtime": 1780682365.5162823,
+    "ast_hash": "d140927c3b9c1e750df9f4cc23db28cd",
+    "semantic_hash": "d140927c3b9c1e750df9f4cc23db28cd"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/.opencode/commands/opsx-apply.md": {
+    "mtime": 1780591543.675401,
+    "ast_hash": "98dfe12d359f39ac0d631c06c7f4d134",
+    "semantic_hash": "98dfe12d359f39ac0d631c06c7f4d134"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/.opencode/commands/opsx-archive.md": {
+    "mtime": 1780591543.6794012,
+    "ast_hash": "48a27c2c74ccc0c38f73f5fe1731403b",
+    "semantic_hash": "48a27c2c74ccc0c38f73f5fe1731403b"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/.opencode/commands/opsx-explore.md": {
+    "mtime": 1780591543.6794012,
+    "ast_hash": "74d5125862b00db97818eb3cbbee8167",
+    "semantic_hash": "74d5125862b00db97818eb3cbbee8167"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/.opencode/commands/opsx-propose.md": {
+    "mtime": 1780591543.6794012,
+    "ast_hash": "a0c6cfc575d565b5343b1d829a198909",
+    "semantic_hash": "a0c6cfc575d565b5343b1d829a198909"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/.opencode/skills/graphify/SKILL.md": {
+    "mtime": 1780596285.2306085,
+    "ast_hash": "3284a79b13f213cbc5d06109f7a25c4e",
+    "semantic_hash": "3284a79b13f213cbc5d06109f7a25c4e"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/.opencode/skills/graphify/references/add-watch.md": {
+    "mtime": 1780596133.4770477,
+    "ast_hash": "0df0589623217ca38a12bdcabfb42f4c",
+    "semantic_hash": "0df0589623217ca38a12bdcabfb42f4c"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/.opencode/skills/graphify/references/exports.md": {
+    "mtime": 1780596133.4810476,
+    "ast_hash": "7fb1a81aca17a462db70684a324fcfb0",
+    "semantic_hash": "7fb1a81aca17a462db70684a324fcfb0"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/.opencode/skills/graphify/references/extraction-spec.md": {
+    "mtime": 1780596133.4810476,
+    "ast_hash": "24808b03abfeaf5f6435bb69c0125b2c",
+    "semantic_hash": "24808b03abfeaf5f6435bb69c0125b2c"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/.opencode/skills/graphify/references/github-and-merge.md": {
+    "mtime": 1780596133.4810476,
+    "ast_hash": "cde13df085e4c492aeb7ba298a996d0d",
+    "semantic_hash": "cde13df085e4c492aeb7ba298a996d0d"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/.opencode/skills/graphify/references/hooks.md": {
+    "mtime": 1780596133.4850476,
+    "ast_hash": "3f545db6ce646650bb9de588f5512a27",
+    "semantic_hash": "3f545db6ce646650bb9de588f5512a27"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/.opencode/skills/graphify/references/query.md": {
+    "mtime": 1780596133.4850476,
+    "ast_hash": "c2a8e798674a81b02aa9975f43023819",
+    "semantic_hash": "c2a8e798674a81b02aa9975f43023819"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/.opencode/skills/graphify/references/transcribe.md": {
+    "mtime": 1780596133.4890475,
+    "ast_hash": "70f6aa30d6211f3a2c7e9fc45479f50c",
+    "semantic_hash": "70f6aa30d6211f3a2c7e9fc45479f50c"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/.opencode/skills/graphify/references/update.md": {
+    "mtime": 1780596133.4890475,
+    "ast_hash": "735932eaa4f0c8fef9566c538ae3e5f8",
+    "semantic_hash": "735932eaa4f0c8fef9566c538ae3e5f8"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AGENTS.md": {
+    "mtime": 1780596285.2306085,
+    "ast_hash": "62c05a2bf20bf036a0b2633478663e64",
+    "semantic_hash": "62c05a2bf20bf036a0b2633478663e64"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/wwwroot/index.html": {
+    "mtime": 1780602790.0374224,
+    "ast_hash": "404bf8d3f2158f81f4c6be27b4976e90",
+    "semantic_hash": "404bf8d3f2158f81f4c6be27b4976e90"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/DEPLOY.md": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "8810c07eb9d96e00820b217f8c4f7fe8",
+    "semantic_hash": "8810c07eb9d96e00820b217f8c4f7fe8"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-build-avatar-tracking-system/.openspec.yaml": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "2fc4bd8d5e0d5ee9e402f61b8a443f5b",
+    "semantic_hash": "2fc4bd8d5e0d5ee9e402f61b8a443f5b"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-build-avatar-tracking-system/design.md": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "9666883c9b3be80095af426bf286bdb6",
+    "semantic_hash": "9666883c9b3be80095af426bf286bdb6"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-build-avatar-tracking-system/proposal.md": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "75234446f831ff27a9fdda6d4f18b3ba",
+    "semantic_hash": "75234446f831ff27a9fdda6d4f18b3ba"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-build-avatar-tracking-system/specs/avatar-customization/spec.md": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "1d746a80dea90aea3ea470f4a922405a",
+    "semantic_hash": "1d746a80dea90aea3ea470f4a922405a"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-build-avatar-tracking-system/specs/avatar-rendering/spec.md": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "6b3754594ba7164c87b55cb57225941d",
+    "semantic_hash": "6b3754594ba7164c87b55cb57225941d"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-build-avatar-tracking-system/specs/camera-capture/spec.md": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "23876ba734ca636c1edcd208b6a317f3",
+    "semantic_hash": "23876ba734ca636c1edcd208b6a317f3"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-build-avatar-tracking-system/specs/connection-resilience/spec.md": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "ef1f526449ff83e0fac9c3e5eb89e5ca",
+    "semantic_hash": "ef1f526449ff83e0fac9c3e5eb89e5ca"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-build-avatar-tracking-system/specs/movement-smoothing/spec.md": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "7d192d1aee6d844bdc6fc550d8dbea88",
+    "semantic_hash": "7d192d1aee6d844bdc6fc550d8dbea88"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-build-avatar-tracking-system/specs/user-calibration/spec.md": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "b1ff10190035ce67abba32b7571131a4",
+    "semantic_hash": "b1ff10190035ce67abba32b7571131a4"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-build-avatar-tracking-system/specs/websocket-tracking/spec.md": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "d4d5ad846128b3d990b3442efc2db32e",
+    "semantic_hash": "d4d5ad846128b3d990b3442efc2db32e"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-build-avatar-tracking-system/tasks.md": {
+    "mtime": 1780593728.6634667,
+    "ast_hash": "20ce529a12e94848eb633894d87fe781",
+    "semantic_hash": "20ce529a12e94848eb633894d87fe781"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-fix-customization-render-and-arm-avatar-scale/.openspec.yaml": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "2fc4bd8d5e0d5ee9e402f61b8a443f5b",
+    "semantic_hash": "2fc4bd8d5e0d5ee9e402f61b8a443f5b"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-fix-customization-render-and-arm-avatar-scale/design.md": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "7a4cf8b07affc1e0a61a91e4555d1b2e",
+    "semantic_hash": "7a4cf8b07affc1e0a61a91e4555d1b2e"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-fix-customization-render-and-arm-avatar-scale/proposal.md": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "792f62bd727cdab6a723b80d6b5149bd",
+    "semantic_hash": "792f62bd727cdab6a723b80d6b5149bd"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-fix-customization-render-and-arm-avatar-scale/specs/avatar-customization/spec.md": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "61386ccb76034f1c9c16a85ef850005f",
+    "semantic_hash": "61386ccb76034f1c9c16a85ef850005f"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-fix-customization-render-and-arm-avatar-scale/specs/avatar-rendering/spec.md": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "c23ca1b6e00b178d64e39e42aad4e64c",
+    "semantic_hash": "c23ca1b6e00b178d64e39e42aad4e64c"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-fix-customization-render-and-arm-avatar-scale/tasks.md": {
+    "mtime": 1780593941.63258,
+    "ast_hash": "8d007233dd5ebc3c2532dfe698c8c444",
+    "semantic_hash": "8d007233dd5ebc3c2532dfe698c8c444"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-fix-tracking-and-add-skeleton-overlay/.openspec.yaml": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "2fc4bd8d5e0d5ee9e402f61b8a443f5b",
+    "semantic_hash": "2fc4bd8d5e0d5ee9e402f61b8a443f5b"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-fix-tracking-and-add-skeleton-overlay/design.md": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "a785e67ee16208a1f50fdc3771d3beff",
+    "semantic_hash": "a785e67ee16208a1f50fdc3771d3beff"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-fix-tracking-and-add-skeleton-overlay/proposal.md": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "6b1a9724942d684d1ce3671423ec0c12",
+    "semantic_hash": "6b1a9724942d684d1ce3671423ec0c12"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-fix-tracking-and-add-skeleton-overlay/specs/skeleton-overlay/spec.md": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "836c070b786fc5aeb059847753c3d1de",
+    "semantic_hash": "836c070b786fc5aeb059847753c3d1de"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-fix-tracking-and-add-skeleton-overlay/specs/websocket-tracking/spec.md": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "69e6c1ea689a7cd408eefffa52b865bd",
+    "semantic_hash": "69e6c1ea689a7cd408eefffa52b865bd"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-fix-tracking-and-add-skeleton-overlay/tasks.md": {
+    "mtime": 1780594052.5320184,
+    "ast_hash": "3136918bbd0aee92d472c7888e715006",
+    "semantic_hash": "3136918bbd0aee92d472c7888e715006"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/config.yaml": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "9e3e7672b387a282583011181ab35f9a",
+    "semantic_hash": "9e3e7672b387a282583011181ab35f9a"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/server/requirements.txt": {
+    "mtime": 1780591543.723402,
+    "ast_hash": "c8e4694c8493c3c7d673cc0d42340522",
+    "semantic_hash": "c8e4694c8493c3c7d673cc0d42340522"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/wwwroot/favicon.png": {
+    "mtime": 1780591543.683401,
+    "ast_hash": "eab4f24ab5ff80be586dcdab8e87dc9c",
+    "semantic_hash": "eab4f24ab5ff80be586dcdab8e87dc9c"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/wwwroot/icon-192.png": {
+    "mtime": 1780591543.683401,
+    "ast_hash": "4ed916c575b07ad638ed9dbd55219ad5",
+    "semantic_hash": "4ed916c575b07ad638ed9dbd55219ad5"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/wwwroot/js/avatarAnim.js": {
+    "mtime": 1780682365.5042825,
+    "ast_hash": "893c1824e9eeb13e450d3539a6542f46",
+    "semantic_hash": "893c1824e9eeb13e450d3539a6542f46"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-fix-frame-backpressure/.openspec.yaml": {
+    "mtime": 1780682365.5082824,
+    "ast_hash": "2fc4bd8d5e0d5ee9e402f61b8a443f5b",
+    "semantic_hash": "2fc4bd8d5e0d5ee9e402f61b8a443f5b"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-fix-frame-backpressure/design.md": {
+    "mtime": 1780682365.5082824,
+    "ast_hash": "bd9fe44cff5d3308c2f57eeedc8a52dc",
+    "semantic_hash": "bd9fe44cff5d3308c2f57eeedc8a52dc"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-fix-frame-backpressure/proposal.md": {
+    "mtime": 1780682365.5082824,
+    "ast_hash": "e436e33f030a0f79ad788be84c2a3419",
+    "semantic_hash": "e436e33f030a0f79ad788be84c2a3419"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-04-fix-frame-backpressure/tasks.md": {
+    "mtime": 1780682365.5082824,
+    "ast_hash": "00d50d7a5ab75395e6b45a05c9d254bb",
+    "semantic_hash": "00d50d7a5ab75395e6b45a05c9d254bb"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-expand-customization-catalog/.openspec.yaml": {
+    "mtime": 1780682365.5082824,
+    "ast_hash": "43d7bac9eb8d54b9989177af92d91bb9",
+    "semantic_hash": "43d7bac9eb8d54b9989177af92d91bb9"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-expand-customization-catalog/design.md": {
+    "mtime": 1780682365.5082824,
+    "ast_hash": "9ca7e7ad0ad5e3a3d53530250d409aac",
+    "semantic_hash": "9ca7e7ad0ad5e3a3d53530250d409aac"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-expand-customization-catalog/proposal.md": {
+    "mtime": 1780682365.5082824,
+    "ast_hash": "e03208f7e72532a1e50deb85125fbbe1",
+    "semantic_hash": "e03208f7e72532a1e50deb85125fbbe1"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-expand-customization-catalog/specs/customization-catalog/spec.md": {
+    "mtime": 1780682365.5082824,
+    "ast_hash": "7bac1778c710ad1105deb00dd5b7088f",
+    "semantic_hash": "7bac1778c710ad1105deb00dd5b7088f"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-expand-customization-catalog/specs/pokemon-hand-items/spec.md": {
+    "mtime": 1780682365.5082824,
+    "ast_hash": "66a1a43e0063f23a8fd639b8381da17d",
+    "semantic_hash": "66a1a43e0063f23a8fd639b8381da17d"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-expand-customization-catalog/tasks.md": {
+    "mtime": 1780682365.5082824,
+    "ast_hash": "7db125fbbb740af8902c10919a55a294",
+    "semantic_hash": "7db125fbbb740af8902c10919a55a294"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-fix-avatar-tracking-and-add-outline/.openspec.yaml": {
+    "mtime": 1780682365.5082824,
+    "ast_hash": "2fc4bd8d5e0d5ee9e402f61b8a443f5b",
+    "semantic_hash": "2fc4bd8d5e0d5ee9e402f61b8a443f5b"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-fix-avatar-tracking-and-add-outline/design.md": {
+    "mtime": 1780682365.5082824,
+    "ast_hash": "1d16843bdeb8d71696b12d248cd7725e",
+    "semantic_hash": "1d16843bdeb8d71696b12d248cd7725e"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-fix-avatar-tracking-and-add-outline/proposal.md": {
+    "mtime": 1780682365.5122824,
+    "ast_hash": "aeb6525a9a0b7086a88e92c3ced0ca27",
+    "semantic_hash": "aeb6525a9a0b7086a88e92c3ced0ca27"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-fix-avatar-tracking-and-add-outline/tasks.md": {
+    "mtime": 1780682365.5122824,
+    "ast_hash": "4eef5046e720646a11c306cfe83a6782",
+    "semantic_hash": "4eef5046e720646a11c306cfe83a6782"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-fix-head-tracking-from-nose/.openspec.yaml": {
+    "mtime": 1780682365.5122824,
+    "ast_hash": "2fc4bd8d5e0d5ee9e402f61b8a443f5b",
+    "semantic_hash": "2fc4bd8d5e0d5ee9e402f61b8a443f5b"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-fix-head-tracking-from-nose/design.md": {
+    "mtime": 1780682365.5122824,
+    "ast_hash": "d5b7c965260b0d00399b8ebdecba1da0",
+    "semantic_hash": "d5b7c965260b0d00399b8ebdecba1da0"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-fix-head-tracking-from-nose/proposal.md": {
+    "mtime": 1780682365.5122824,
+    "ast_hash": "da9f871440cdf615312c60659796d4b0",
+    "semantic_hash": "da9f871440cdf615312c60659796d4b0"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-fix-head-tracking-from-nose/tasks.md": {
+    "mtime": 1780682365.5122824,
+    "ast_hash": "e3110ce2fe51f3367e466329fb0deac5",
+    "semantic_hash": "e3110ce2fe51f3367e466329fb0deac5"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-fix-shirt-css-and-scale-hand-items/.openspec.yaml": {
+    "mtime": 1780682365.5122824,
+    "ast_hash": "43d7bac9eb8d54b9989177af92d91bb9",
+    "semantic_hash": "43d7bac9eb8d54b9989177af92d91bb9"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-fix-shirt-css-and-scale-hand-items/design.md": {
+    "mtime": 1780682365.5122824,
+    "ast_hash": "3ae899a4c57ba22713df944661b57826",
+    "semantic_hash": "3ae899a4c57ba22713df944661b57826"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-fix-shirt-css-and-scale-hand-items/proposal.md": {
+    "mtime": 1780682365.5122824,
+    "ast_hash": "ac019ec8f51ffbe2f947ed6166d6df77",
+    "semantic_hash": "ac019ec8f51ffbe2f947ed6166d6df77"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-fix-shirt-css-and-scale-hand-items/tasks.md": {
+    "mtime": 1780682365.5122824,
+    "ast_hash": "c8c6d8e64bbef7525172dce2a3b9b017",
+    "semantic_hash": "c8c6d8e64bbef7525172dce2a3b9b017"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-harden-tracking-pipeline/.openspec.yaml": {
+    "mtime": 1780682365.5122824,
+    "ast_hash": "2fc4bd8d5e0d5ee9e402f61b8a443f5b",
+    "semantic_hash": "2fc4bd8d5e0d5ee9e402f61b8a443f5b"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-harden-tracking-pipeline/design.md": {
+    "mtime": 1780682365.5122824,
+    "ast_hash": "c436b1868730fa3edaa4354f799100e0",
+    "semantic_hash": "c436b1868730fa3edaa4354f799100e0"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-harden-tracking-pipeline/proposal.md": {
+    "mtime": 1780682365.5122824,
+    "ast_hash": "0bda3c9aa714908ec5f7bc3b1a05a33b",
+    "semantic_hash": "0bda3c9aa714908ec5f7bc3b1a05a33b"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-harden-tracking-pipeline/tasks.md": {
+    "mtime": 1780682365.5122824,
+    "ast_hash": "0f1515f7daf55c467f945ea32965f3e8",
+    "semantic_hash": "0f1515f7daf55c467f945ea32965f3e8"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-js-direct-avatar-render/.openspec.yaml": {
+    "mtime": 1780682365.5122824,
+    "ast_hash": "2fc4bd8d5e0d5ee9e402f61b8a443f5b",
+    "semantic_hash": "2fc4bd8d5e0d5ee9e402f61b8a443f5b"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-js-direct-avatar-render/design.md": {
+    "mtime": 1780682365.5122824,
+    "ast_hash": "66458e87a97fb6968cf77d0dfe53e682",
+    "semantic_hash": "66458e87a97fb6968cf77d0dfe53e682"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-js-direct-avatar-render/proposal.md": {
+    "mtime": 1780682365.5122824,
+    "ast_hash": "6b681987cafdcbd35da5127a0d3e44cf",
+    "semantic_hash": "6b681987cafdcbd35da5127a0d3e44cf"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-js-direct-avatar-render/tasks.md": {
+    "mtime": 1780682365.5122824,
+    "ast_hash": "a309f83bed134a320517b7699b12c143",
+    "semantic_hash": "a309f83bed134a320517b7699b12c143"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-manual-avatar-scale-slider/.openspec.yaml": {
+    "mtime": 1780682365.5122824,
+    "ast_hash": "43d7bac9eb8d54b9989177af92d91bb9",
+    "semantic_hash": "43d7bac9eb8d54b9989177af92d91bb9"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-manual-avatar-scale-slider/design.md": {
+    "mtime": 1780682365.5122824,
+    "ast_hash": "e3402e1c64bf1c1d7fe1c1878f383265",
+    "semantic_hash": "e3402e1c64bf1c1d7fe1c1878f383265"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-manual-avatar-scale-slider/proposal.md": {
+    "mtime": 1780682365.5162823,
+    "ast_hash": "bf94b6441a1cba5eb57e64e504dc61cd",
+    "semantic_hash": "bf94b6441a1cba5eb57e64e504dc61cd"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-manual-avatar-scale-slider/tasks.md": {
+    "mtime": 1780682365.5162823,
+    "ast_hash": "7e7dcc32242beb807c6aa55363d7bad0",
+    "semantic_hash": "7e7dcc32242beb807c6aa55363d7bad0"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-responsive-avatar-and-dynamic-ws/.openspec.yaml": {
+    "mtime": 1780682365.5162823,
+    "ast_hash": "43d7bac9eb8d54b9989177af92d91bb9",
+    "semantic_hash": "43d7bac9eb8d54b9989177af92d91bb9"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-responsive-avatar-and-dynamic-ws/design.md": {
+    "mtime": 1780682365.5162823,
+    "ast_hash": "b7752211c9a07205ed0298e6babe46d5",
+    "semantic_hash": "b7752211c9a07205ed0298e6babe46d5"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-responsive-avatar-and-dynamic-ws/proposal.md": {
+    "mtime": 1780682365.5162823,
+    "ast_hash": "c3ec32fc094f404ad20ed2380f6f62ad",
+    "semantic_hash": "c3ec32fc094f404ad20ed2380f6f62ad"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-responsive-avatar-and-dynamic-ws/tasks.md": {
+    "mtime": 1780682365.5162823,
+    "ast_hash": "f21eb1c43ec22c809fa693482da91c08",
+    "semantic_hash": "f21eb1c43ec22c809fa693482da91c08"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-stay-upright-hand-items/.openspec.yaml": {
+    "mtime": 1780682365.5162823,
+    "ast_hash": "43d7bac9eb8d54b9989177af92d91bb9",
+    "semantic_hash": "43d7bac9eb8d54b9989177af92d91bb9"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-stay-upright-hand-items/design.md": {
+    "mtime": 1780682365.5162823,
+    "ast_hash": "32e9a9d5192d58509e3b3aba50daf024",
+    "semantic_hash": "32e9a9d5192d58509e3b3aba50daf024"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-stay-upright-hand-items/proposal.md": {
+    "mtime": 1780682365.5162823,
+    "ast_hash": "e131a1b11462ad834385bee18ad2cecb",
+    "semantic_hash": "e131a1b11462ad834385bee18ad2cecb"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/openspec/changes/archive/2026-06-05-stay-upright-hand-items/tasks.md": {
+    "mtime": 1780682365.5162823,
+    "ast_hash": "8b003d24fa9533732edc0af6176a5f61",
+    "semantic_hash": "8b003d24fa9533732edc0af6176a5f61"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/wwwroot/imgs/Pokemon/eevee.png": {
+    "mtime": 1780682365.5042825,
+    "ast_hash": "19d099c86d4add6d7f50d20d49783b9c",
+    "semantic_hash": "19d099c86d4add6d7f50d20d49783b9c"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/wwwroot/imgs/Pokemon/lapras.png": {
+    "mtime": 1780682365.5042825,
+    "ast_hash": "da384dc9ac663ec7da9284783fb10c0f",
+    "semantic_hash": "da384dc9ac663ec7da9284783fb10c0f"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/wwwroot/imgs/Pokemon/nidoqueen.png": {
+    "mtime": 1780682365.5042825,
+    "ast_hash": "fb4e3545825ef23e6181be6de7e3f3f8",
+    "semantic_hash": "fb4e3545825ef23e6181be6de7e3f3f8"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/wwwroot/imgs/Pokemon/piplup.png": {
+    "mtime": 1780682365.5042825,
+    "ast_hash": "544e7330816515565058c8a31e3b74bd",
+    "semantic_hash": "544e7330816515565058c8a31e3b74bd"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/wwwroot/imgs/Pokemon/rowlet.png": {
+    "mtime": 1780682365.5042825,
+    "ast_hash": "397d3a3b6cc36bdffc12a9a17fa1b7d4",
+    "semantic_hash": "397d3a3b6cc36bdffc12a9a17fa1b7d4"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/wwwroot/imgs/Pokemon/squirtle.png": {
+    "mtime": 1780682365.5042825,
+    "ast_hash": "91c63f4ab1aae60a934b2c6eddd0d738",
+    "semantic_hash": "91c63f4ab1aae60a934b2c6eddd0d738"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/wwwroot/imgs/Pokemon/treecko.png": {
+    "mtime": 1780682365.5042825,
+    "ast_hash": "bb5e569588bc7497f1209ce2d9900f36",
+    "semantic_hash": "bb5e569588bc7497f1209ce2d9900f36"
+  },
+  "/mnt/Datos/Repos/ProyectoExpoAvatarIA/AvatarExpo/wwwroot/imgs/Pokemon/zapdos.png": {
+    "mtime": 1780682365.5042825,
+    "ast_hash": "aef511947d75d46bf0993baa74900dc0",
+    "semantic_hash": "aef511947d75d46bf0993baa74900dc0"
+  }
+}

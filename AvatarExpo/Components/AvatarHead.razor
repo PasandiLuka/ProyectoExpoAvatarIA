@@ -1,0 +1,322 @@
+<div id="head" class="head @ExpressionClass">
+    <div id="hair" class="hair @HairStyle" style="background-color: @HairColor;"></div>
+
+    @* === GORROS === *@
+
+    @* Cowboy — SVG *@
+    <div class="hat @(HatStyle == "hat-cowboy" ? "active" : "")" style="top:-48px; left:-12px; width:184px; height:80px;">
+        <svg viewBox="0 0 100 50">
+            <ellipse cx="50" cy="38" rx="48" ry="10" fill="#6b3e1a"/>
+            <path d="M 20,38 Q 18,25 28,10 Q 40,-2 50,5 Q 60,-2 72,10 Q 82,25 80,38 Z" fill="#8b5a2b"/>
+            <path d="M 28,10 Q 40,-2 50,5 Q 60,-2 72,10" fill="none" stroke="#6b3e1a" stroke-width="2"/>
+            <path d="M 22,32 Q 25,28 50,30 Q 75,28 78,32" fill="none" stroke="#5a2d0c" stroke-width="3"/>
+            <rect x="22" y="31" width="56" height="5" rx="2" fill="#4a1e08"/>
+        </svg>
+    </div>
+
+    @* Vikingo — SVG *@
+    <div class="hat @(HatStyle == "hat-vikingo" ? "active" : "")" style="top:-50px; left:8px; width:144px; height:80px;">
+        <svg viewBox="0 0 100 60">
+            <defs>
+                <linearGradient id="metalGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#c0c0c0"/>
+                    <stop offset="40%" stop-color="#808080"/>
+                    <stop offset="100%" stop-color="#505050"/>
+                </linearGradient>
+            </defs>
+            <path d="M 15,50 Q 10,30 20,15 Q 30,5 50,8 Q 70,5 80,15 Q 90,30 85,50 Z" fill="url(#metalGrad)" stroke="#404040" stroke-width="1.5"/>
+            <rect x="22" y="28" width="56" height="6" rx="2" fill="#606060" stroke="#404040" stroke-width="0.5"/>
+            <circle cx="28" cy="31" r="2" fill="#909090"/>
+            <circle cx="40" cy="31" r="2" fill="#909090"/>
+            <circle cx="52" cy="31" r="2" fill="#909090"/>
+            <circle cx="64" cy="31" r="2" fill="#909090"/>
+            <circle cx="72" cy="31" r="2" fill="#909090"/>
+            <path d="M 22,15 Q 18,-5 10,-20 Q 8,-28 12,-28 Q 16,-28 18,-18 Q 22,-5 24,12 Z" fill="#e8dcc8" stroke="#c8b898" stroke-width="1"/>
+            <path d="M 78,15 Q 82,-5 90,-20 Q 92,-28 88,-28 Q 84,-28 82,-18 Q 78,-5 76,12 Z" fill="#e8dcc8" stroke="#c8b898" stroke-width="1"/>
+        </svg>
+    </div>
+
+    @* Mexicano — SVG *@
+    <div class="hat @(HatStyle == "hat-sombrero-mexicano" ? "active" : "")" style="top:-35px; left:-35px; width:230px; height:75px;">
+        <svg viewBox="0 0 120 45">
+            <ellipse cx="60" cy="38" rx="58" ry="7" fill="#c4944a"/>
+            <ellipse cx="60" cy="37" rx="58" ry="7" fill="#d4a574"/>
+            <path d="M 22,37 Q 24,20 36,8 Q 50,-2 60,2 Q 70,-2 84,8 Q 96,20 98,37 Z" fill="#d4a574" stroke="#b8844a" stroke-width="1"/>
+            <path d="M 42,22 Q 47,18 60,20 Q 73,18 78,22 L 76,24 Q 65,21 60,22 Q 55,21 44,24 Z" fill="#8b2244"/>
+            <line x1="60" y1="2" x2="60" y2="0" stroke="#8b2244" stroke-width="3"/>
+            <circle cx="60" cy="-1" r="3" fill="#8b2244"/>
+            <path d="M 62,1 Q 68,4 72,8" fill="none" stroke="#8b2244" stroke-width="1.5" stroke-dasharray="2,2"/>
+            <path d="M 58,1 Q 52,4 48,8" fill="none" stroke="#8b2244" stroke-width="1.5" stroke-dasharray="2,2"/>
+        </svg>
+    </div>
+
+    @* Espacial — SVG *@
+    <div class="hat @(HatStyle == "hat-casco-espacial" ? "active" : "")" style="top:-0px; left:-15px; width:190px; height:175px;">
+        <svg viewBox="0 0 100 100">
+            <defs>
+                <radialGradient id="helmetGlow" cx="35%" cy="30%" r="60%">
+                    <stop offset="0%" stop-color="rgba(255,255,255,0.5)"/>
+                    <stop offset="40%" stop-color="rgba(180,200,240,0.2)"/>
+                    <stop offset="100%" stop-color="rgba(100,130,180,0.05)"/>
+                </radialGradient>
+                <radialGradient id="visorGrad" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="rgba(80,140,220,0.6)"/>
+                    <stop offset="60%" stop-color="rgba(30,70,180,0.7)"/>
+                    <stop offset="100%" stop-color="rgba(10,30,100,0.8)"/>
+                </radialGradient>
+            </defs>
+            <circle cx="50" cy="52" r="44" fill="url(#helmetGlow)" stroke="rgba(220,230,255,0.5)" stroke-width="2.5"/>
+            <ellipse cx="50" cy="48" rx="32" ry="28" fill="url(#visorGrad)" stroke="rgba(180,200,240,0.6)" stroke-width="2"/>
+            <ellipse cx="38" cy="38" rx="10" ry="7" fill="rgba(255,255,255,0.3)" transform="rotate(-20,38,38)"/>
+            <path d="M 24,70 Q 20,82 30,90 Q 50,98 70,90 Q 80,82 76,70" fill="rgba(180,200,220,0.4)" stroke="rgba(220,230,255,0.5)" stroke-width="2"/>
+            <circle cx="76" cy="25" r="2" fill="rgba(255,255,255,0.7)"/>
+        </svg>
+    </div>
+
+    @* VR — SVG *@
+    <div class="hat @(HatStyle == "hat-diadema-vr" ? "active" : "")" style="top:-28px; left:0px; width:160px; height:62px;">
+        <svg viewBox="0 0 100 42">
+            <rect x="5" y="22" width="90" height="12" rx="5" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+            <rect x="12" y="6" width="28" height="20" rx="4" fill="#111" stroke="#444" stroke-width="1.5"/>
+            <rect x="60" y="6" width="28" height="20" rx="4" fill="#111" stroke="#444" stroke-width="1.5"/>
+            <rect x="14" y="8" width="10" height="4" rx="1" fill="rgba(0,200,255,0.4)"/>
+            <rect x="62" y="8" width="10" height="4" rx="1" fill="rgba(0,200,255,0.4)"/>
+            <rect x="16" y="14" width="6" height="2" rx="1" fill="rgba(0,180,240,0.2)"/>
+            <rect x="64" y="14" width="6" height="2" rx="1" fill="rgba(0,180,240,0.2)"/>
+            <circle cx="40" cy="28" r="3" fill="#333" stroke="#555" stroke-width="0.5"/>
+            <circle cx="50" cy="28" r="2.5" fill="#1a1a1a"/>
+            <circle cx="60" cy="28" r="2.5" fill="#1a1a1a"/>
+            <path d="M 50,35 Q 55,42 65,42" fill="none" stroke="#444" stroke-width="1.5" stroke-dasharray="3,2"/>
+        </svg>
+    </div>
+
+    @* Corona — SVG *@
+    <div class="hat @(HatStyle == "hat-corona" ? "active" : "")" style="top:-38px; left:-2px; width:164px; height:42px;">
+        <svg viewBox="0 0 100 30">
+            <defs>
+                <linearGradient id="crownGold" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#ffe066"/>
+                    <stop offset="30%" stop-color="#ffd700"/>
+                    <stop offset="60%" stop-color="#e6b800"/>
+                    <stop offset="100%" stop-color="#b8860b"/>
+                </linearGradient>
+            </defs>
+            <polygon points="0,30 8,10 16,22 25,6 34,20 42,2 50,18 58,2 66,20 75,6 84,22 92,10 100,30" fill="url(#crownGold)" stroke="#8b6508" stroke-width="0.8"/>
+            <circle cx="8" cy="14" r="3" fill="#e74c3c"/>
+            <circle cx="25" cy="10" r="3" fill="#3498db"/>
+            <circle cx="42" cy="6" r="3.5" fill="#e74c3c"/>
+            <circle cx="50" cy="14" r="3.5" fill="#27ae60"/>
+            <circle cx="58" cy="6" r="3.5" fill="#e74c3c"/>
+            <circle cx="75" cy="10" r="3" fill="#3498db"/>
+            <circle cx="92" cy="14" r="3" fill="#e74c3c"/>
+            <rect x="0" y="26" width="100" height="4" rx="1" fill="#8b6508"/>
+        </svg>
+    </div>
+
+    @* Bruja — SVG puntiagudo *@
+    <div class="hat @(HatStyle == "hat-bruja" ? "active" : "")" style="top:-50px; left:0; width:160px; height:60px;">
+        <svg viewBox="0 0 100 50">
+            <defs>
+                <linearGradient id="witchGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#2d004b"/>
+                    <stop offset="50%" stop-color="#1a002e"/>
+                    <stop offset="100%" stop-color="#0d0018"/>
+                </linearGradient>
+            </defs>
+            <polygon points="50,2 20,30 0,28 0,40 100,40 100,28 80,30" fill="url(#witchGrad)" stroke="#111" stroke-width="1"/>
+            <rect x="40" y="24" width="20" height="6" rx="2" fill="#ffd700" stroke="#b8860b" stroke-width="0.5"/>
+            <ellipse cx="0" cy="34" rx="15" ry="10" fill="url(#witchGrad)" stroke="#111" stroke-width="1"/>
+            <ellipse cx="100" cy="34" rx="15" ry="10" fill="url(#witchGrad)" stroke="#111" stroke-width="1"/>
+        </svg>
+    </div>
+
+    @* Pirata — SVG tricornio *@
+    <div class="hat @(HatStyle == "hat-pirata" ? "active" : "")" style="top:-32px; left:-4px; width:168px; height:44px;">
+        <svg viewBox="0 0 100 30">
+            <defs>
+                <linearGradient id="pirateGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#2a2a2a"/>
+                    <stop offset="100%" stop-color="#111"/>
+                </linearGradient>
+            </defs>
+            <path d="M 5,6 Q 15,2 50,5 Q 85,2 95,6 L 90,20 Q 50,28 10,20 Z" fill="url(#pirateGrad)" stroke="#333" stroke-width="0.8"/>
+            <path d="M 10,18 Q 8,8 5,6" fill="url(#pirateGrad)" stroke="#333" stroke-width="0.8"/>
+            <path d="M 90,18 Q 92,8 95,6" fill="url(#pirateGrad)" stroke="#333" stroke-width="0.8"/>
+            <circle cx="50" cy="14" r="5" fill="#f5f5f0"/>
+            <circle cx="47" cy="12" r="1.2" fill="#111"/>
+            <circle cx="53" cy="12" r="1.2" fill="#111"/>
+            <rect x="48" y="17" width="4" height="3" fill="#111"/>
+            <line x1="44" y1="19" x2="56" y2="19" stroke="#111" stroke-width="1"/>
+            <line x1="45" y1="15" x2="55" y2="15" stroke="#111" stroke-width="0.5"/>
+        </svg>
+    </div>
+
+    @* Orejas de gato — SVG *@
+    <div class="hat @(HatStyle == "hat-cat-ears" ? "active" : "")" style="top:-18px; left:12px; width:136px; height:24px;">
+        <svg viewBox="0 0 100 20">
+            <polygon points="10,20 22,0 34,20" fill="#333"/>
+            <polygon points="14,20 22,6 30,20" fill="#ff9999"/>
+            <polygon points="66,20 78,0 90,20" fill="#333"/>
+            <polygon points="70,20 78,6 86,20" fill="#ff9999"/>
+        </svg>
+    </div>
+
+    @* Chef — CSS (mantiene div) *@
+    <div class="hat hat-chef @(HatStyle == "hat-chef" ? "active" : "")"></div>
+
+    @* Cap — CSS *@
+    <div class="hat hat-cap @(HatStyle == "hat-cap" ? "active" : "")"></div>
+
+    @* Gorra Argentina — CSS *@
+    <div class="hat hat-gorra-argentina @(HatStyle == "hat-gorra-argentina" ? "active" : "")"></div>
+
+    @* Galera — CSS *@
+    <div class="hat hat-galera @(HatStyle == "hat-galera" ? "active" : "")"></div>
+
+    @* Beanie — CSS *@
+    <div class="hat hat-beanie @(HatStyle == "hat-beanie" ? "active" : "")"></div>
+
+    @* === ANTEOJOS === *@
+
+    @* Sol — SVG Wayfarer *@
+    <div class="glasses @(GlassesStyle == "glasses-sun" ? "active" : "")" style="gap:8px;">
+        <svg viewBox="0 0 100 40" style="width:110px; height:44px;">
+            <defs>
+                <linearGradient id="lensGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#111"/>
+                    <stop offset="60%" stop-color="#1a1a1a"/>
+                    <stop offset="100%" stop-color="#333"/>
+                </linearGradient>
+            </defs>
+            <rect x="5" y="8" width="38" height="26" rx="6" fill="url(#lensGrad)" stroke="#111" stroke-width="3"/>
+            <polygon points="14,8 20,0 34,0 34,8" fill="#222"/>
+            <rect x="43" y="16" width="14" height="5" rx="2" fill="#222"/>
+            <rect x="57" y="8" width="38" height="26" rx="6" fill="url(#lensGrad)" stroke="#111" stroke-width="3"/>
+            <line x1="20" y1="4" x2="18" y2="0" stroke="#222" stroke-width="3"/>
+            <line x1="80" y1="4" x2="82" y2="0" stroke="#222" stroke-width="3"/>
+            <path d="M 12,14 L 30,12 M 70,12 L 88,14" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+    </div>
+
+    @* Nerd — SVG *@
+    <div class="glasses @(GlassesStyle == "glasses-nerd" ? "active" : "")" style="gap:6px;">
+        <svg viewBox="0 0 100 40" style="width:100px; height:40px;">
+            <rect x="2" y="6" width="38" height="28" rx="3" fill="rgba(200,220,255,0.15)" stroke="#111" stroke-width="5"/>
+            <rect x="4" y="8" width="34" height="24" rx="2" fill="none" stroke="#222" stroke-width="1"/>
+            <rect x="40" y="16" width="10" height="6" rx="1" fill="#222"/>
+            <rect x="50" y="16" width="10" height="6" rx="1" fill="#222"/>
+            <rect x="60" y="6" width="38" height="28" rx="3" fill="rgba(200,220,255,0.15)" stroke="#111" stroke-width="5"/>
+            <rect x="62" y="8" width="34" height="24" rx="2" fill="none" stroke="#222" stroke-width="1"/>
+            <path d="M 10,10 L 22,8 M 78,10 L 90,8" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="16" y1="0" x2="14" y2="5" stroke="#222" stroke-width="3"/>
+            <line x1="84" y1="0" x2="86" y2="5" stroke="#222" stroke-width="3"/>
+        </svg>
+    </div>
+
+    @* Futurista — SVG *@
+    <div class="glasses @(GlassesStyle == "glasses-futurista" ? "active" : "")" style="gap:0;">
+        <svg viewBox="0 0 100 35" style="width:110px; height:38px;">
+            <defs>
+                <linearGradient id="futVisor" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#00f"/>
+                    <stop offset="30%" stop-color="#80f"/>
+                    <stop offset="60%" stop-color="#f0f"/>
+                    <stop offset="100%" stop-color="#0ff"/>
+                </linearGradient>
+            </defs>
+            <rect x="3" y="5" width="94" height="24" rx="12" fill="url(#futVisor)" opacity="0.7" stroke="#0cf" stroke-width="2"/>
+            <rect x="3" y="5" width="94" height="24" rx="12" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+            <line x1="15" y1="12" x2="35" y2="12" stroke="rgba(0,255,255,0.6)" stroke-width="1"/>
+            <line x1="15" y1="16" x2="28" y2="16" stroke="rgba(255,0,255,0.5)" stroke-width="0.8"/>
+            <line x1="15" y1="20" x2="40" y2="20" stroke="rgba(0,255,255,0.4)" stroke-width="0.8"/>
+            <line x1="55" y1="12" x2="80" y2="12" stroke="rgba(0,255,255,0.6)" stroke-width="1"/>
+            <line x1="60" y1="16" x2="85" y2="16" stroke="rgba(255,0,255,0.5)" stroke-width="0.8"/>
+            <line x1="55" y1="20" x2="75" y2="20" stroke="rgba(0,255,255,0.4)" stroke-width="0.8"/>
+            <circle cx="50" cy="17" r="2" fill="#0ff"/>
+        </svg>
+    </div>
+
+    @* 3D — SVG cardboard frame *@
+    <div class="glasses @(GlassesStyle == "glasses-3d" ? "active" : "")" style="gap:4px;">
+        <svg viewBox="0 0 100 40" style="width:105px; height:42px;">
+            <rect x="5" y="6" width="40" height="28" rx="3" fill="rgba(255,40,40,0.55)" stroke="#8b5a2b" stroke-width="3"/>
+            <rect x="45" y="15" width="10" height="8" rx="1" fill="#8b5a2b"/>
+            <rect x="55" y="6" width="40" height="28" rx="3" fill="rgba(40,80,255,0.55)" stroke="#8b5a2b" stroke-width="3"/>
+            <rect x="2" y="2" width="96" height="4" rx="1" fill="#a0724a"/>
+            <rect x="4" y="34" width="92" height="3" rx="1" fill="#a0724a"/>
+            <text x="50" y="26" text-anchor="middle" font-size="8" font-weight="bold" fill="#8b5a2b" font-family="monospace">3D</text>
+        </svg>
+    </div>
+
+    @* Googly — CSS *@
+    <div class="glasses @(GlassesStyle == "glasses-googly" ? "active" : "")">
+        <div class="glass-googly"></div><div class="glass-googly"></div>
+    </div>
+
+    @* Monoculo — CSS *@
+    <div class="glasses @(GlassesStyle == "glasses-monoculo" ? "active" : "")" style="justify-content:flex-end; padding-right:35px;">
+        <div class="glass-mono"></div>
+    </div>
+
+    @* Redondos — CSS *@
+    <div class="glasses @(GlassesStyle == "glasses-redondo" ? "active" : "")">
+        <div class="glass-redondo"></div><div class="glass-redondo"></div>
+    </div>
+
+    @* Corazón — SVG *@
+    <div class="glasses @(GlassesStyle == "glasses-corazon" ? "active" : "")" style="gap:8px;">
+        <svg viewBox="0 0 45 40" style="width:45px;height:40px;">
+            <path d="M22,36 C10,28 2,20 2,12 C2,6 6,2 12,2 C16,2 19,4 22,8 C25,4 28,2 32,2 C38,2 42,6 42,12 C42,20 34,28 22,36Z" fill="none" stroke="#ff1493" stroke-width="3"/>
+        </svg>
+        <svg viewBox="0 0 45 40" style="width:45px;height:40px;">
+            <path d="M22,36 C10,28 2,20 2,12 C2,6 6,2 12,2 C16,2 19,4 22,8 C25,4 28,2 32,2 C38,2 42,6 42,12 C42,20 34,28 22,36Z" fill="none" stroke="#ff1493" stroke-width="3"/>
+        </svg>
+    </div>
+
+    @* Estrella — SVG *@
+    <div class="glasses @(GlassesStyle == "glasses-estrella" ? "active" : "")" style="gap:8px;">
+        <svg viewBox="0 0 50 48" style="width:50px;height:48px;">
+            <polygon points="25,2 31,18 48,18 34,28 39,46 25,36 11,46 16,28 2,18 19,18" fill="none" stroke="#ffd700" stroke-width="2.5"/>
+        </svg>
+        <svg viewBox="0 0 50 48" style="width:50px;height:48px;">
+            <polygon points="25,2 31,18 48,18 34,28 39,46 25,36 11,46 16,28 2,18 19,18" fill="none" stroke="#ffd700" stroke-width="2.5"/>
+        </svg>
+    </div>
+
+    @* Cibernético — SVG scanner *@
+    <div class="glasses @(GlassesStyle == "glasses-cibernetico" ? "active" : "")" style="gap:0;">
+        <svg viewBox="0 0 110 30" style="width:110px;height:30px;">
+            <rect x="2" y="8" width="106" height="16" rx="8" fill="none" stroke="#0ff" stroke-width="2"/>
+            <circle cx="20" cy="16" r="3" fill="#0ff" opacity="0.6"/>
+            <circle cx="50" cy="16" r="2" fill="#f0f" opacity="0.5"/>
+            <circle cx="80" cy="16" r="3" fill="#0ff" opacity="0.6"/>
+            <line x1="30" y1="12" x2="45" y2="12" stroke="rgba(0,255,255,0.4)" stroke-width="0.8"/>
+            <line x1="55" y1="12" x2="70" y2="12" stroke="rgba(255,0,255,0.4)" stroke-width="0.8"/>
+        </svg>
+    </div>
+
+    @* Diva — CSS *@
+    <div class="glasses @(GlassesStyle == "glasses-diva" ? "active" : "")">
+        <div class="glass-diva"></div><div class="glass-diva"></div>
+    </div>
+
+    <div class="eyes-container">
+        <div class="relative"><div class="eyebrow"></div><div class="eye"></div></div>
+        <div class="relative"><div class="eyebrow"></div><div class="eye"></div></div>
+    </div>
+    <div class="mouth"></div>
+</div>
+
+@code {
+    [Parameter] public string? HairStyle { get; set; }
+    [Parameter] public string? HairColor { get; set; }
+    [Parameter] public string? HatStyle { get; set; }
+    [Parameter] public string? GlassesStyle { get; set; }
+    [Parameter] public string? ExpressionClass { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        if (string.IsNullOrEmpty(ExpressionClass))
+            ExpressionClass = string.Empty;
+    }
+}

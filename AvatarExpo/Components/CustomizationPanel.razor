@@ -1,0 +1,262 @@
+@inject AvatarState AvatarState
+
+<div class="panel panel-derecho">
+    <h2 class="seccion-titulo mt-0">Personalizacion</h2>
+
+    <div class="custom-category">
+        <button class="custom-cat-header" @onclick='() => ToggleCat(0)'>
+            Estilo de Pelo <span class="arrow @(_openCat == 0 ? "open" : "")">&#9654;</span>
+        </button>
+        <div class="custom-cat-content @(_openCat == 0 ? "open" : "")">
+            <div class="grid grid-cols-3 gap-1 mt-2 mb-2">
+                <button class="btn-custom m-0 text-center text-xs" @onclick='() => SetHair("hair-style-1")'>Tipo 1</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick='() => SetHair("hair-style-2")'>Tipo 2</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick='() => SetHair("hair-style-3")'>Tipo 3</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick='() => SetHair("hair-style-4")'>Tipo 4</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick='() => SetHair("hair-style-5")'>Tipo 5</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick='() => SetHair("hair-style-6")'>Tipo 6</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick='() => SetHair("hair-style-7")'>Tipo 7</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick='() => SetHair("hair-style-8")'>Tipo 8</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick='() => SetHair("hair-style-9")'>Tipo 9</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick='() => SetHair("hair-style-10")'>Mohawk</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick='() => SetHair("hair-style-11")'>Trenzas</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick='() => SetHair("hair-style-12")'>Rulos</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick='() => SetHair("hair-style-13")'>Fade</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick='() => SetHair("hair-style-14")'>Japonés</button>
+            </div>
+            <div class="mt-2 flex items-center gap-2">
+                <label class="text-xs" style="color: rgba(192,192,192,0.7);">Color:</label>
+                <input type="color" value="@AvatarState.HairColor"
+                       @oninput="OnHairColorInput"
+                       style="width: 30px; height: 30px; border: 2px solid #c0c0c0; border-radius: 4px; cursor: pointer; padding: 0; background: none;" />
+                <input type="text" value="@AvatarState.HairColor"
+                       @oninput="OnHairHexInput"
+                       maxlength="7"
+                       style="width: 70px; height: 24px; background: rgba(0,0,0,0.3); color: #c0c0c0; border: 1px solid rgba(192,192,192,0.25); border-radius: 3px; font-size: 0.75rem; padding: 0 4px; font-family: monospace;" />
+            </div>
+        </div>
+    </div>
+
+    <div class="custom-category">
+        <button class="custom-cat-header" @onclick='() => ToggleCat(1)'>
+            Remeras <span class="arrow @(_openCat == 1 ? "open" : "")">&#9654;</span>
+        </button>
+        <div class="custom-cat-content @(_openCat == 1 ? "open" : "")">
+            <div class="grid grid-cols-3 gap-1 mt-2">
+                <button class="btn-custom m-0 text-center text-xs" @onclick="SetShirtShort">Corta</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick="SetShirtLong">Larga</button>
+                <button class="btn-custom m-0 text-center text-xs bg-blue-900/50" @onclick="SetShirtBoca">Boca</button>
+                <button class="btn-custom m-0 text-center text-xs bg-white/20" @onclick="SetShirtRiver">River</button>
+                <button class="btn-custom m-0 text-center text-xs bg-sky-300/30" @onclick="SetShirtArgentina">Argentina</button>
+                <button class="btn-custom m-0 text-center text-xs bg-yellow-400/30" @onclick="SetShirtBrasil">Brasil</button>
+                <button class="btn-custom m-0 text-center text-xs bg-red-600/30" @onclick="SetShirtEspana">España</button>
+                <button class="btn-custom m-0 text-center text-xs bg-white/20" @onclick="SetShirtAlemania">Alemania</button>
+                <button class="btn-custom m-0 text-center text-xs bg-purple-800/40" @onclick="SetShirtCSharp">C#</button>
+                <button class="btn-custom m-0 text-center text-xs bg-blue-600/30" @onclick="SetShirtPython">Python</button>
+                <button class="btn-custom m-0 text-center text-xs bg-yellow-300/30" @onclick="SetShirtJs">JS</button>
+                <button class="btn-custom m-0 text-center text-xs bg-black/50" @onclick="SetShirtMatrix">Matrix</button>
+                <button class="btn-custom m-0 text-center text-xs bg-indigo-900/60" @onclick="SetShirt67">67</button>
+                <button class="btn-custom m-0 text-center text-xs bg-green-800/40" @onclick="SetShirtMexico">México</button>
+                <button class="btn-custom m-0 text-center text-xs bg-red-800/40" @onclick="SetShirtUsa">EE.UU.</button>
+                <button class="btn-custom m-0 text-center text-xs bg-red-700/40" @onclick="SetShirtCanada">Canadá</button>
+                <button class="btn-custom m-0 text-center text-xs bg-white/20" @onclick="SetShirtCorea">Corea</button>
+                <button class="btn-custom m-0 text-center text-xs bg-white/20" @onclick="SetShirtInglaterra">Inglaterra</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="custom-category">
+        <button class="custom-cat-header" @onclick='() => ToggleCat(2)'>
+            Gorros <span class="arrow @(_openCat == 2 ? "open" : "")">&#9654;</span>
+        </button>
+        <div class="custom-cat-content @(_openCat == 2 ? "open" : "")">
+            <div class="grid grid-cols-2 gap-1 mt-2">
+                <button class="btn-custom m-0 text-center text-xs" @onclick="SetHatNone">Ninguno</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick="SetHatCowboy">Vaquero</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick="SetHatChef">Chef</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick="SetHatCap">Gorra</button>
+                <button class="btn-custom m-0 text-center text-xs bg-sky-300/30" @onclick="SetHatGorraArg">Gorra Arg</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick="SetHatViking">Vikingo</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick="SetHatMexicano">Mexicano</button>
+                <button class="btn-custom m-0 text-center text-xs bg-slate-400/30" @onclick="SetHatEspacial">Espacial</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick="SetHatVR">VR</button>
+                <button class="btn-custom m-0 text-center text-xs bg-yellow-500/30" @onclick="SetHatCorona">Corona</button>
+                <button class="btn-custom m-0 text-center text-xs bg-purple-900/50" @onclick="SetHatBruja">Bruja</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick="SetHatGalera">Galera</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick="SetHatBeanie">Beanie</button>
+                <button class="btn-custom m-0 text-center text-xs bg-yellow-700/30" @onclick="SetHatPirata">Pirata</button>
+                <button class="btn-custom m-0 text-center text-xs bg-pink-400/30" @onclick="SetHatCatEars">Gato</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="custom-category">
+        <button class="custom-cat-header" @onclick='() => ToggleCat(3)'>
+            Anteojos <span class="arrow @(_openCat == 3 ? "open" : "")">&#9654;</span>
+        </button>
+        <div class="custom-cat-content @(_openCat == 3 ? "open" : "")">
+            <div class="grid grid-cols-2 gap-1 mt-2">
+                <button class="btn-custom m-0 text-center text-xs" @onclick="SetGlassesNone">Ninguno</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick="SetGlassesSun">Sol</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick="SetGlassesGoogly">Saltones</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick="SetGlassesNerd">Nerd</button>
+                <button class="btn-custom m-0 text-center text-xs bg-purple-500/20" @onclick="SetGlassesFuturista">Futurista</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick="SetGlasses3D">3D</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick="SetGlassesMonoculo">Monoculo</button>
+                <button class="btn-custom m-0 text-center text-xs" @onclick="SetGlassesRedondo">Redondo</button>
+                <button class="btn-custom m-0 text-center text-xs bg-pink-300/20" @onclick="SetGlassesCorazon">Corazón</button>
+                <button class="btn-custom m-0 text-center text-xs bg-yellow-500/20" @onclick="SetGlassesEstrella">Estrella</button>
+                <button class="btn-custom m-0 text-center text-xs bg-cyan-400/20" @onclick="SetGlassesCibernetico">Cibernético</button>
+                <button class="btn-custom m-0 text-center text-xs bg-orange-400/20" @onclick="SetGlassesDiva">Diva</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="custom-category">
+        <button class="custom-cat-header" @onclick='() => ToggleCat(4)'>
+            Objetos de Mano <span class="arrow @(_openCat == 4 ? "open" : "")">&#9654;</span>
+        </button>
+        <div class="custom-cat-content scroll-sm @(_openCat == 4 ? "open" : "")">
+            <div class="text-xs mb-1 mt-2" style="color: rgba(192,192,192,0.6);">I = Izquierda &nbsp; D = Derecha</div>
+            @foreach (var item in HandItems)
+            {
+                var id = item.id;
+                var label = item.label;
+                <div class="flex items-center justify-between mb-1 py-1 px-1 rounded" style="background: rgba(255,215,0,0.05);">
+                    <span class="text-xs truncate flex-1" style="color: #c0c0c0;">@label</span>
+                    @if (id != "guitarra")
+                    {
+                    <button class="hand-btn @(AvatarState.LeftHandItem == id ? "active" : "")"
+                            @onclick='() => SetHand("left", id)'>I</button>
+                    }
+                    else
+                    {
+                    <span class="text-xs px-2" style="color: rgba(192,192,192,0.3);">-</span>
+                    }
+                    <button class="hand-btn @(AvatarState.RightHandItem == id ? "active" : "")"
+                            @onclick='() => SetHand("right", id)'>D</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private int _openCat = -1;
+
+    private void ToggleCat(int index) { _openCat = _openCat == index ? -1 : index; }
+
+    private void Notify() => AvatarState.NotifyStateChanged();
+
+    private void SetHair(string style) { AvatarState.HairStyle = style; Notify(); }
+
+    private async Task OnHairColorInput(ChangeEventArgs e)
+    {
+        var raw = e.Value?.ToString() ?? "#3e2723";
+        AvatarState.HairColor = raw;
+        Notify();
+    }
+
+    private async Task OnHairHexInput(ChangeEventArgs e)
+    {
+        var raw = e.Value?.ToString() ?? "";
+        if (raw.StartsWith("#") && raw.Length is 4 or 7)
+        {
+            AvatarState.HairColor = raw;
+            Notify();
+        }
+    }
+
+    private void SetShirtShort() { AvatarState.ShirtStyle = "shirt-short"; Notify(); }
+    private void SetShirtLong() { AvatarState.ShirtStyle = "shirt-long"; Notify(); }
+    private void SetShirtBoca() { AvatarState.ShirtStyle = "shirt-boca"; Notify(); }
+    private void SetShirtRiver() { AvatarState.ShirtStyle = "shirt-river"; Notify(); }
+    private void SetShirtArgentina() { AvatarState.ShirtStyle = "shirt-argentina"; Notify(); }
+    private void SetShirtBrasil() { AvatarState.ShirtStyle = "shirt-brasil"; Notify(); }
+    private void SetShirtEspana() { AvatarState.ShirtStyle = "shirt-espana"; Notify(); }
+    private void SetShirtAlemania() { AvatarState.ShirtStyle = "shirt-alemania"; Notify(); }
+    private void SetShirtCSharp() { AvatarState.ShirtStyle = "shirt-csharp"; Notify(); }
+    private void SetShirtPython() { AvatarState.ShirtStyle = "shirt-python"; Notify(); }
+    private void SetShirtJs() { AvatarState.ShirtStyle = "shirt-javascript"; Notify(); }
+    private void SetShirtMatrix() { AvatarState.ShirtStyle = "shirt-matrix"; Notify(); }
+    private void SetShirt67() { AvatarState.ShirtStyle = "shirt-67"; Notify(); }
+    private void SetShirtMexico() { AvatarState.ShirtStyle = "shirt-mexico"; Notify(); }
+    private void SetShirtUsa() { AvatarState.ShirtStyle = "shirt-usa"; Notify(); }
+    private void SetShirtCanada() { AvatarState.ShirtStyle = "shirt-canada"; Notify(); }
+    private void SetShirtCorea() { AvatarState.ShirtStyle = "shirt-corea"; Notify(); }
+    private void SetShirtInglaterra() { AvatarState.ShirtStyle = "shirt-inglaterra"; Notify(); }
+
+    private void SetHatNone() { AvatarState.HatStyle = "none"; Notify(); }
+    private void SetHatCowboy() { AvatarState.HatStyle = "hat-cowboy"; Notify(); }
+    private void SetHatChef() { AvatarState.HatStyle = "hat-chef"; Notify(); }
+    private void SetHatCap() { AvatarState.HatStyle = "hat-cap"; Notify(); }
+    private void SetHatGorraArg() { AvatarState.HatStyle = "hat-gorra-argentina"; Notify(); }
+    private void SetHatViking() { AvatarState.HatStyle = "hat-vikingo"; Notify(); }
+    private void SetHatMexicano() { AvatarState.HatStyle = "hat-sombrero-mexicano"; Notify(); }
+    private void SetHatEspacial() { AvatarState.HatStyle = "hat-casco-espacial"; Notify(); }
+    private void SetHatVR() { AvatarState.HatStyle = "hat-diadema-vr"; Notify(); }
+    private void SetHatCorona() { AvatarState.HatStyle = "hat-corona"; Notify(); }
+    private void SetHatBruja() { AvatarState.HatStyle = "hat-bruja"; Notify(); }
+    private void SetHatGalera() { AvatarState.HatStyle = "hat-galera"; Notify(); }
+    private void SetHatBeanie() { AvatarState.HatStyle = "hat-beanie"; Notify(); }
+    private void SetHatPirata() { AvatarState.HatStyle = "hat-pirata"; Notify(); }
+    private void SetHatCatEars() { AvatarState.HatStyle = "hat-cat-ears"; Notify(); }
+
+    private void SetGlassesNone() { AvatarState.GlassesStyle = "none"; Notify(); }
+    private void SetGlassesSun() { AvatarState.GlassesStyle = "glasses-sun"; Notify(); }
+    private void SetGlassesGoogly() { AvatarState.GlassesStyle = "glasses-googly"; Notify(); }
+    private void SetGlassesNerd() { AvatarState.GlassesStyle = "glasses-nerd"; Notify(); }
+    private void SetGlassesFuturista() { AvatarState.GlassesStyle = "glasses-futurista"; Notify(); }
+    private void SetGlasses3D() { AvatarState.GlassesStyle = "glasses-3d"; Notify(); }
+    private void SetGlassesMonoculo() { AvatarState.GlassesStyle = "glasses-monoculo"; Notify(); }
+    private void SetGlassesRedondo() { AvatarState.GlassesStyle = "glasses-redondo"; Notify(); }
+    private void SetGlassesCorazon() { AvatarState.GlassesStyle = "glasses-corazon"; Notify(); }
+    private void SetGlassesEstrella() { AvatarState.GlassesStyle = "glasses-estrella"; Notify(); }
+    private void SetGlassesCibernetico() { AvatarState.GlassesStyle = "glasses-cibernetico"; Notify(); }
+    private void SetGlassesDiva() { AvatarState.GlassesStyle = "glasses-diva"; Notify(); }
+
+    private void SetHand(string side, string item)
+    {
+        if (side == "left" && item == "guitarra") return;
+        if (side == "left") AvatarState.LeftHandItem = item;
+        else AvatarState.RightHandItem = item;
+        Notify();
+    }
+
+    private static readonly (string id, string label)[] HandItems = new[]
+    {
+        ("none", "Vacia"),
+        ("fernet", "Fernet"),
+        ("water", "Botella Agua"),
+        ("cup", "Copa Mundial"),
+        ("mate", "Mate"),
+        ("pelota", "Pelota"),
+        ("bandera", "Bandera Arg"),
+        ("trofeo", "Trofeo Mundial"),
+        ("laptop", "Laptop"),
+        ("teclado", "Teclado"),
+        ("mouse", "Mouse"),
+        ("microfono", "Microfono"),
+        ("guitarra", "Guitarra"),
+        ("sable", "Espada Laser"),
+        ("celular", "Celular"),
+        ("libro", "Libro"),
+        ("pizza", "Pizza"),
+        ("hamburguesa", "Hamburguesa"),
+        ("pochoclos", "Pochoclos"),
+        ("pokebola", "Pokebola"),
+        ("pokemon-eevee", "Eevee"),
+        ("pokemon-treecko", "Treecko"),
+        ("pokemon-rowlet", "Rowlet"),
+        ("pokemon-lapras", "Lapras"),
+        ("pokemon-zapdos", "Zapdos"),
+        ("pokemon-nidoqueen", "Nidoqueen"),
+        ("pokemon-piplup", "Piplup"),
+        ("pokemon-squirtle", "Squirtle"),
+        ("tambor", "Tambor"),
+        ("baston", "Baston"),
+        ("antorcha", "Antorcha"),
+        ("escudo", "Escudo"),
+        ("flor", "Flores"),
+    };
+}

@@ -1,0 +1,21 @@
+@page "/"
+@inject AvatarState AvatarState
+@implements IDisposable
+
+<div class="layout-grid">
+    <CameraPanel />
+    <AvatarRenderer />
+    <CustomizationPanel />
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        AvatarState.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        AvatarState.OnChange -= StateHasChanged;
+    }
+}

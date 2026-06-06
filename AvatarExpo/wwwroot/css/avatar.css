@@ -1,0 +1,1303 @@
+:root {
+    --skin-color: #fcd5ce;
+    --hair-color: #3e2723;
+    --gold: #ffd700;
+    --gold-dark: #b8860b;
+    --silver: #c0c0c0;
+    --leather: #8b5a2b;
+    --metal: #6b6b6b;
+}
+
+.panel-central {
+    background-color: #111536;
+    position: relative;
+    perspective: 800px;
+    overflow: hidden;
+}
+
+.avatar-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 80px;
+}
+
+.body-wrapper {
+    position: relative;
+    width: 180px;
+    height: 250px;
+    transform-style: preserve-3d;
+    transform-origin: center bottom;
+    transition: transform 0.1s ease-out;
+}
+
+/* ============================================================
+   TORSO & SHIRTS
+   ============================================================ */
+.torso {
+    width: 100%;
+    height: 100%;
+    background-color: #e0e0e0;
+    border-radius: 60px 60px 20px 20px;
+    position: absolute;
+    z-index: 10;
+    transition: background 0.3s;
+    box-shadow: inset 0 -20px 40px rgba(0,0,0,0.3), 0 0 2px black, 0 0 2px black;
+}
+
+.torso.shirt-boca {
+    background: linear-gradient(to bottom, #003087 40%, #FFB81C 40%, #FFB81C 60%, #003087 60%);
+}
+.torso.shirt-boca::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 24px;
+    height: 20px;
+    background: #FFB81C;
+    border-radius: 50%;
+    border: 2px solid #003087;
+}
+.torso.shirt-boca::after {
+    content: '12';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 26px;
+    font-weight: 900;
+    color: #FFB81C;
+    font-family: monospace;
+    text-shadow: 2px 2px 0 #003087;
+}
+
+.torso.shirt-river {
+    background: linear-gradient(145deg, #ffffff 42%, #d00000 42%, #d00000 58%, #ffffff 58%);
+}
+.torso.shirt-river::after {
+    content: '9';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 28px;
+    font-weight: 900;
+    color: #d00000;
+    font-family: monospace;
+    text-shadow: 2px 2px 0 #fff;
+}
+
+.torso.shirt-long { background-color: #2b2d42; }
+.torso.shirt-short { background-color: #8d99ae; }
+
+.torso.shirt-argentina {
+    background: linear-gradient(to bottom, #75aadb 0%, #75aadb 33%, #ffffff 33%, #ffffff 66%, #75aadb 66%);
+}
+.torso.shirt-argentina::after {
+    content: '10';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 28px;
+    font-weight: 900;
+    color: #000;
+    font-family: monospace;
+}
+
+.torso.shirt-brasil {
+    background: linear-gradient(to bottom, #fedd00 70%, #009b3a 70%);
+}
+.torso.shirt-brasil::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 60px;
+    height: 60px;
+    background: #009b3a;
+    border-radius: 50%;
+    border: 3px solid #002776;
+}
+.torso.shirt-brasil::after {
+    content: '10';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 22px;
+    font-weight: 900;
+    color: #fedd00;
+    font-family: monospace;
+    z-index: 1;
+}
+
+.torso.shirt-espana {
+    background: linear-gradient(to bottom, #c60b1e 25%, #ffc400 25%, #ffc400 75%, #c60b1e 75%);
+}
+.torso.shirt-espana::after {
+    content: '6';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 28px;
+    font-weight: 900;
+    color: #ffc400;
+    font-family: monospace;
+    text-shadow: 1px 1px 0 #c60b1e;
+}
+
+.torso.shirt-alemania {
+    background: linear-gradient(to bottom, #000 33%, #dd0000 33%, #dd0000 66%, #ffcc00 66%);
+}
+.torso.shirt-alemania::after {
+    content: '13';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 26px;
+    font-weight: 900;
+    color: #fff;
+    font-family: monospace;
+}
+
+.torso.shirt-csharp { background: #68217a; position: relative; }
+.torso.shirt-csharp::after {
+    content: '#';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 48px;
+    font-weight: 900;
+    color: #fff;
+    font-family: Consolas, monospace;
+    opacity: 0.9;
+}
+
+.torso.shirt-python {
+    background: linear-gradient(135deg, #306998 50%, #ffd43b 50%);
+}
+.torso.shirt-python::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 40px;
+    height: 40px;
+    background:
+        radial-gradient(circle at 45% 35%, #ffd43b 8px, transparent 8px),
+        radial-gradient(circle at 55% 65%, #306998 8px, transparent 8px);
+    border-radius: 50%;
+}
+
+.torso.shirt-javascript { background: #f7df1e; }
+.torso.shirt-javascript::after {
+    content: '{JS}';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 22px;
+    font-weight: 900;
+    color: #323330;
+    font-family: monospace;
+}
+
+.torso.shirt-matrix { background: #0d0d0d; }
+.torso.shirt-matrix::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 4px,
+        rgba(0,255,65,0.08) 4px,
+        rgba(0,255,65,0.08) 5px
+    );
+    border-radius: 60px 60px 20px 20px;
+}
+.torso.shirt-matrix::after {
+    content: '>_';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 28px;
+    font-weight: 900;
+    color: #00ff41;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 8px #00ff41;
+}
+
+/* --- 67 — Meme comunitario --- */
+.torso.shirt-67 { background: #1a1a2e; }
+.torso.shirt-67::before {
+    content: '67';
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 40px;
+    font-weight: 900;
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    text-shadow: 2px 2px 0 #ff6b6b;
+}
+.torso.shirt-67::after {
+    content: 'sixseven';
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 14px;
+    font-weight: 700;
+    color: #aaa;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+}
+
+/* --- México — Tricolor + Zapdos --- */
+.torso.shirt-mexico {
+    background: linear-gradient(to right, #006847 33%, #fff 33%, #fff 66%, #ce1126 66%);
+}
+.torso.shirt-mexico::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 52px; height: 52px;
+    background-image: url('../imgs/Pokemon/zapdos.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* --- EE.UU. — Barras y estrellas --- */
+.torso.shirt-usa {
+    background: linear-gradient(to bottom,
+        #b22234 0%, #b22234 8%, #fff 8%, #fff 17%,
+        #b22234 17%, #b22234 25%, #fff 25%, #fff 33%,
+        #b22234 33%, #b22234 42%, #fff 42%, #fff 50%,
+        #b22234 50%, #b22234 58%, #fff 58%, #fff 67%,
+        #b22234 67%, #b22234 75%, #fff 75%, #fff 83%,
+        #b22234 83%, #b22234 92%, #fff 92%, #fff 100%);
+}
+.torso.shirt-usa::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 50%; height: 54%;
+    background: #3c3b6e;
+    border-radius: 8px 0 0 0;
+}
+.torso.shirt-usa::after {
+    content: '★ ★ ★';
+    position: absolute;
+    top: 8%; left: 6%;
+    font-size: 9px;
+    color: #fff;
+    letter-spacing: 2px;
+    line-height: 1.2;
+}
+
+/* --- Canadá — Hoja de maple --- */
+.torso.shirt-canada {
+    background: linear-gradient(to right, #d52b1e 25%, #fff 25%, #fff 75%, #d52b1e 75%);
+}
+.torso.shirt-canada::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 40px; height: 42px;
+    background: #d52b1e;
+    clip-path: polygon(
+        50% 0%, 60% 30%, 95% 30%, 68% 50%, 80% 80%,
+        50% 60%, 20% 80%, 32% 50%, 5% 30%, 40% 30%
+    );
+}
+
+/* --- Corea del Sur — Taeguk --- */
+.torso.shirt-corea { background: #fff; }
+.torso.shirt-corea::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    background:
+        linear-gradient(to bottom, #cd2e3a 50%, #0047a0 50%);
+    border: 2px solid #000;
+}
+.torso.shirt-corea::after {
+    content: '☰ ☲ ☷ ☴';
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 8px;
+    color: #000;
+    letter-spacing: 8px;
+}
+
+/* --- Inglaterra — Cruz de San Jorge --- */
+.torso.shirt-inglaterra { background: #fff; }
+.torso.shirt-inglaterra::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    height: 18%;
+    background: #ce1126;
+    transform: translateY(-50%);
+}
+.torso.shirt-inglaterra::after {
+    content: '';
+    position: absolute;
+    left: 50%; top: 0; bottom: 0;
+    width: 14%;
+    background: #ce1126;
+    transform: translateX(-50%);
+}
+
+/* ============================================================
+   HEAD
+   ============================================================ */
+.head {
+    width: 160px;
+    height: 180px;
+    background-color: var(--skin-color);
+    border-radius: 45%;
+    position: absolute;
+    top: -160px;
+    left: 10px;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: bottom center;
+    transition: transform 0.1s ease-out;
+    box-shadow: 0 0 2px black, 0 0 2px black;
+}
+
+.eyes-container { display: flex; gap: 30px; margin-top: 60px; }
+.eye { width: 15px; height: 20px; background-color: #000; border-radius: 50%; }
+.eyebrow { width: 30px; height: 6px; background-color: var(--hair-color); border-radius: 5px; position: absolute; top: -15px; transition: transform 0.2s; }
+.mouth { width: 40px; height: 15px; background-color: #8a3a3a; border-radius: 0 0 20px 20px; margin-top: 30px; transition: all 0.2s; }
+
+/* Expressions */
+.head.exp-smile .mouth { border-radius: 0 0 30px 30px; height: 25px; width: 50px; }
+.head.exp-surprise .mouth { border-radius: 50%; height: 35px; width: 35px; }
+.head.exp-angry .mouth { border-radius: 20px 20px 0 0; height: 10px; }
+.head.exp-angry .eyebrow { transform: rotate(15deg); }
+.head.exp-angry .eyes-container > div:first-child .eyebrow { transform: rotate(-15deg); }
+
+/* ============================================================
+   HAIR — 9 estilos claramente distinguibles
+   ============================================================ */
+.hair {
+    position: absolute;
+    top: -10px;
+    width: 100%;
+    height: 60px;
+    background-color: var(--hair-color);
+    border-radius: 50% 50% 0 0;
+    z-index: 25;
+}
+
+/* 1 — Corto prolijo clásico */
+.hair-style-1 {
+    border-radius: 50% 50% 5% 5%;
+    height: 55px;
+    width: 102%;
+    left: -1%;
+    box-shadow: inset 0 -8px 12px rgba(0,0,0,0.3);
+}
+
+/* 2 — Flequillo asimétrico barrido a la derecha */
+.hair-style-2 {
+    border-radius: 60% 20% 0 30%;
+    height: 78px;
+    width: 112%;
+    left: -4%;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 85% 100%, 0 65%);
+    box-shadow: inset 0 -6px 10px rgba(0,0,0,0.25);
+}
+
+/* 3 — Corto rectangular (buzzcut) */
+.hair-style-3 {
+    border-radius: 8px;
+    height: 40px;
+    width: 104%;
+    left: -2%;
+    background: linear-gradient(to bottom, var(--hair-color), rgba(0,0,0,0.5));
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+/* 4 — Semilargo con volumen, cubre laterales */
+.hair-style-4 {
+    border-radius: 40% 40% 5% 5%;
+    height: 85px;
+    width: 120%;
+    left: -10%;
+    background: linear-gradient(180deg, var(--hair-color) 55%, transparent 55%);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* 5 — Cresta / pico central */
+.hair-style-5 {
+    border-radius: 0;
+    height: 65px;
+    width: 80%;
+    left: 10%;
+    clip-path: polygon(30% 0, 70% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%);
+    background: linear-gradient(to bottom, var(--hair-color) 0%, rgba(0,0,0,0.6) 100%);
+}
+
+/* 6 — Afro / voluminoso con textura */
+.hair-style-6 {
+    border-radius: 55% 55% 15% 15%;
+    height: 80px;
+    width: 125%;
+    left: -12%;
+    box-shadow:
+        0 -4px 0 var(--hair-color),
+        0 -8px 0 rgba(0,0,0,0.2),
+        0 -12px 0 rgba(0,0,0,0.1);
+    background: radial-gradient(ellipse at 20% 80%, rgba(0,0,0,0.4), var(--hair-color));
+}
+
+/* 7 — Rapado / casi calvo */
+.hair-style-7 {
+    height: 30px;
+    width: 100%;
+    border-radius: 0;
+    background: transparent;
+    box-shadow:
+        0 2px 0 rgba(0,0,0,0.15),
+        0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* 8 — Largo lacio, raya al medio */
+.hair-style-8 {
+    border-radius: 50% 50% 0 0;
+    height: 95px;
+    width: 140%;
+    left: -20%;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 70% 100%, 30% 100%, 0 85%);
+    background: linear-gradient(
+        90deg,
+        var(--hair-color) 48%,
+        rgba(0,0,0,0.4) 48%,
+        rgba(0,0,0,0.4) 52%,
+        var(--hair-color) 52%
+    );
+    box-shadow: inset 0 -10px 15px rgba(0,0,0,0.3);
+}
+
+/* 9 — Cola / recogido atrás */
+.hair-style-9 {
+    border-radius: 60% 60% 0 0;
+    height: 55px;
+    width: 106%;
+    left: -3%;
+    clip-path: polygon(0 0, 100% 0, 95% 80%, 50% 100%, 5% 80%);
+    box-shadow:
+        inset 0 -4px 8px rgba(0,0,0,0.3),
+        0 25px 0 var(--hair-color),
+        0 25px 4px rgba(0,0,0,0.2);
+}
+
+/* 10 — Mohawk punk */
+.hair-style-10 {
+    border-radius: 0;
+    height: 80px;
+    width: 40%;
+    left: 30%;
+    clip-path: polygon(35% 0, 65% 0, 65% 100%, 35% 100%);
+    background: linear-gradient(to bottom, #ff1493, #b60ab6);
+    box-shadow: 0 0 8px rgba(255,20,147,0.5);
+    top: -40px;
+}
+.hair-style-10::before {
+    content: '';
+    position: absolute;
+    left: -100%; right: -100%; bottom: 0;
+    height: 20px;
+    background: var(--hair-color);
+    border-radius: 0 0 50% 50%;
+}
+
+/* 11 — Trenzas colgantes */
+.hair-style-11 {
+    border-radius: 0;
+    height: 95px;
+    width: 104%;
+    left: -2%;
+    background: var(--hair-color);
+    clip-path: polygon(2% 20%, 20% 18%, 30% 20%, 40% 18%, 50% 20%, 60% 18%, 70% 20%, 80% 18%, 98% 20%, 98% 100%, 2% 100%);
+    box-shadow:
+        inset 0 -6px 12px rgba(0,0,0,0.3),
+        2px 0 0 rgba(0,0,0,0.1),
+        -2px 0 0 rgba(0,0,0,0.1);
+}
+.hair-style-11::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent, transparent 10px,
+        rgba(0,0,0,0.12) 10px, rgba(0,0,0,0.12) 11px
+    );
+    border-radius: inherit;
+}
+
+/* 12 — Rulos voluminosos */
+.hair-style-12 {
+    border-radius: 50% 50% 0 0;
+    height: 75px;
+    width: 116%;
+    left: -8%;
+    background:
+        repeating-radial-gradient(
+            circle at 50% 80%,
+            var(--hair-color) 0px,
+            var(--hair-color) 6px,
+            rgba(0,0,0,0.08) 6px,
+            rgba(0,0,0,0.08) 8px
+        );
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.4),
+        inset 0 -8px 15px rgba(0,0,0,0.2);
+}
+
+/* 13 — Fade degradado */
+.hair-style-13 {
+    border-radius: 0;
+    height: 50px;
+    width: 100%;
+    background: linear-gradient(to bottom, var(--hair-color), color-mix(in srgb, var(--hair-color) 40%, rgb(138, 133, 133)));
+    clip-path: polygon(15% 0, 85% 0, 100% 60%, 90% 100%, 10% 100%, 0 60%);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* 14 — Japonés moderno */
+.hair-style-14 {
+    border-radius: 0;
+    height: 65px;
+    width: 110%;
+    left: -5%;
+    background: var(--hair-color);
+    clip-path: polygon(10% 0, 90% 0, 100% 40%, 95% 100%, 5% 100%, 0 40%);
+    box-shadow: inset 0 -3px 6px rgba(0,0,0,0.2);
+}
+.hair-style-14::before {
+    content: '';
+    position: absolute;
+    top: -10px; left: 20%; right: 20%; height: 25px;
+    background: var(--hair-color);
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+/* ============================================================
+   HATS — base + CSS refinado (chef, cap, gorra-arg)
+   Los demás (cowboy, vikingo, mexicano, espacial, VR, corona)
+   son SVG inline en AvatarHead.razor
+   ============================================================ */
+.hat { position: absolute; z-index: 30; display: none; top: 0; left: 0; }
+.hat.active { display: block; }
+
+/* Chef — CSS refinado con pliegues */
+.hat-chef {
+    top: -85px; left: 5px;
+    width: 150px; height: 85px;
+    background:
+        radial-gradient(ellipse at 20% 60%, #f0f0f0 8%, transparent 15%),
+        radial-gradient(ellipse at 50% 50%, #f0f0f0 10%, transparent 18%),
+        radial-gradient(ellipse at 80% 60%, #f0f0f0 8%, transparent 15%),
+        #fff;
+    border-radius: 45px 45px 12px 12px;
+    box-shadow: inset 0 -10px 20px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.15);
+}
+.hat-chef::before {
+    content: '';
+    position: absolute;
+    bottom: -8px; left: -5px;
+    width: 160px; height: 16px;
+    background: #eee;
+    border-radius: 0 0 12px 12px;
+}
+.hat-chef::after {
+    content: '';
+    position: absolute;
+    top: -10px; left: 20px;
+    width: 110px; height: 25px;
+    background: radial-gradient(ellipse at 50% 100%, #fff 60%, transparent 70%);
+    border-radius: 50% 50% 0 0;
+}
+
+/* Cap — CSS refinado con volumen */
+.hat-cap {
+    top: -12px; left: -2px;
+    width: 164px; height: 52px;
+    background: linear-gradient(to bottom, #e01010 0%, #c00000 40%, #a00000 100%);
+    border-radius: 55px 55px 5px 5px;
+    box-shadow: inset 0 4px 8px rgba(255,255,255,0.2), 0 4px 10px rgba(0,0,0,0.2);
+}
+.hat-cap::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 95px;
+    width: 75px; height: 18px;
+    background: linear-gradient(to bottom, #b00000, #800000);
+    border-radius: 2px 14px 14px 2px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+
+/* Gorra Argentina — CSS refinado */
+.hat-gorra-argentina {
+    top: -12px; left: -2px;
+    width: 164px; height: 52px;
+    background: linear-gradient(to bottom, #75aadb 50%, #fff 50%);
+    border-radius: 55px 55px 5px 5px;
+    box-shadow: inset 0 4px 8px rgba(255,255,255,0.3), 0 4px 10px rgba(0,0,0,0.15);
+}
+.hat-gorra-argentina::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 95px;
+    width: 75px; height: 18px;
+    background: #75aadb;
+    border-radius: 2px 14px 14px 2px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+.hat-gorra-argentina::before {
+    content: '';
+    position: absolute;
+    top: 10px; left: 50%;
+    transform: translateX(-50%);
+    width: 22px; height: 22px;
+    background: radial-gradient(circle, #ffd700 30%, #f0a000 60%, #c88000 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(255,215,0,0.6);
+}
+
+/* --- Galera (Top Hat) — CSS --- */
+.hat-galera {
+    top: -80px; left: 34px;
+    width: 90px; height: 100px;
+    background: #1a1a1a;
+    border-radius: 2px;
+    box-shadow: inset 0 -10px 20px rgba(0,0,0,0.5);
+}
+.hat-galera::before {
+    content: '';
+    position: absolute;
+    bottom: -8px; left: -12px;
+    width: 114px; height: 12px;
+    background: #1a1a1a;
+    border-radius: 4px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+}
+.hat-galera::after {
+    content: '';
+    position: absolute;
+    bottom: 12px; left: 0; right: 0;
+    height: 6px;
+    background: #8b0000;
+}
+
+/* --- Beanie — CSS --- */
+.hat-beanie {
+    top: -38px; left: 38px;
+    width: 80px; height: 50px;
+    background: radial-gradient(ellipse at 50% 80%, #2a2a2a, #111);
+    border-radius: 40px 40px 30px 30px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+}
+.hat-beanie::before {
+    content: '';
+    position: absolute;
+    top: -12px; left: 50%;
+    transform: translateX(-50%);
+    width: 16px; height: 16px;
+    background: #2a2a2a;
+    border-radius: 50%;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+}
+
+/* ============================================================
+   GLASSES — base + CSS refinado (googly, monocle)
+   Los demás (sun, nerd, futurista, 3d) son SVG inline
+   ============================================================ */
+.glasses { position: absolute; top: 55px; z-index: 35; display: none; }
+.glasses.active { display: flex; gap: 10px; align-items: center; justify-content: center; width: 100%; }
+
+/* Googly — CSS refinado, ojos más grandes y expresivos */
+.glass-googly {
+    width: 48px; height: 48px;
+    background: radial-gradient(circle at 40% 40%, #fff, #e8e8e8);
+    border-radius: 50%;
+    border: 3px solid #111;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+.glass-googly::after {
+    content: '';
+    position: absolute;
+    bottom: 6px; right: 8px;
+    width: 16px; height: 16px;
+    background: #000;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px #fff;
+}
+
+/* Monocle — CSS refinado con cadena detallada */
+.glass-mono {
+    width: 38px; height: 38px;
+    border: 4px solid var(--gold-dark);
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.6), rgba(200,220,255,0.2));
+    position: relative;
+    box-shadow: 0 0 0 1px var(--gold), inset 0 0 10px rgba(255,255,255,0.3);
+}
+.glass-mono::after {
+    content: '';
+    position: absolute;
+    right: -4px; bottom: -20px;
+    width: 3px; height: 20px;
+    background: repeating-linear-gradient(
+        to bottom,
+        var(--gold-dark) 0px,
+        var(--gold-dark) 3px,
+        var(--gold) 3px,
+        var(--gold) 6px
+    );
+    border-radius: 1px;
+}
+
+/* Redondos — CSS Lennon */
+.glass-redondo {
+    width: 42px; height: 42px;
+    border: 3px solid #1a1a1a;
+    border-radius: 50%;
+    background: rgba(200,220,255,0.15);
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.3);
+}
+
+/* Diva — CSS extravagante */
+.glass-diva {
+    width: 48px; height: 32px;
+    background: linear-gradient(135deg, #ffd700, #ff8c00);
+    clip-path: polygon(5% 0, 95% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%);
+    box-shadow: 0 0 12px rgba(255,215,0,0.5), inset 0 -4px 8px rgba(0,0,0,0.3);
+}
+.glass-diva::after {
+    content: '';
+    position: absolute;
+    top: 6px; left: 6px; right: 6px; bottom: 6px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.2);
+}
+
+/* ============================================================
+   ARMS
+   ============================================================ */
+.arm-container {
+    position: absolute;
+    top: 20px;
+    width: 60px;
+    height: 120px;
+    transform-origin: top center;
+    z-index: 15;
+    transition: transform 0.05s ease-out;
+    transform: rotate(0deg);
+}
+.arm-container.left { left: -20px; }
+.arm-container.right { right: -20px; }
+
+.arm-upper {
+    width: 100%;
+    height: 100%;
+    background-color: var(--skin-color);
+    border-radius: 30px;
+    box-shadow: inset -5px 0 10px rgba(0,0,0,0.2), 0 0 1.5px black;
+}
+
+.arm-lower {
+    position: absolute;
+    bottom: -100px;
+    width: 50px;
+    height: 110px;
+    background-color: var(--skin-color);
+    border-radius: 25px;
+    left: 5px;
+    transform-origin: top center;
+    transform: rotate(0deg);
+    transition: transform 0.05s ease-out;
+    box-shadow: inset -5px 0 10px rgba(0,0,0,0.1), 0 0 1.5px black;
+}
+
+.torso.shirt-long ~ .arm-container .arm-lower { background-color: #2b2d42; }
+.torso.shirt-river ~ .arm-container .arm-lower { background-color: #ffffff; }
+.torso.shirt-long ~ .arm-container .arm-upper { background-color: #2b2d42; }
+.torso.shirt-river ~ .arm-container .arm-upper { background-color: #ffffff; }
+
+.hand {
+    position: absolute;
+    bottom: -30px;
+    left: -5px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--skin-color);
+    border-radius: 50%;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 1.5px black;
+}
+
+/* ============================================================
+   HAND ITEMS — base
+   ============================================================ */
+.item { position: absolute; z-index: 25; bottom: 20px; display: none; transform-origin: bottom center; }
+.item.active { display: block; }
+
+/* --- Water — CSS refinado --- */
+.item-water {
+    width: 38px; height: 82px;
+    background: linear-gradient(to bottom, #0d47a1 0%, #0d47a1 15%, rgba(100,180,255,0.4) 15%, rgba(100,180,255,0.4) 85%, #0d47a1 85%, #0d47a1 100%);
+    border-radius: 10px 10px 14px 14px;
+    border: 2px solid rgba(255,255,255,0.5);
+    position: relative;
+    box-shadow: inset 0 20px 30px rgba(255,255,255,0.2), 0 4px 10px rgba(0,0,0,0.2);
+}
+.item-water::before {
+    content: '';
+    position: absolute;
+    top: -8px; left: 4px;
+    width: 30px; height: 10px;
+    background: linear-gradient(to bottom, #1565c0, #0d47a1);
+    border-radius: 4px 4px 0 0;
+}
+.item-water::after {
+    content: '';
+    position: absolute;
+    top: 25px; left: 8px;
+    width: 8px; height: 6px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 50%;
+    box-shadow: 14px 22px 0 rgba(255,255,255,0.3), 6px 40px 0 rgba(255,255,255,0.25);
+}
+
+/* --- Mate — CSS mejorado --- */
+.item-mate {
+    position: relative;
+    width: 38px; height: 58px;
+    background: radial-gradient(ellipse at 50% 30%, #c07040, #7a3a1a);
+    border-radius: 50% 50% 60% 60% / 60% 60% 40% 40%;
+    box-shadow: inset 0 20px 30px rgba(0,0,0,0.4), 0 10px 20px rgba(0,0,0,0.15);
+}
+.item-mate::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: -4px;
+    height: 32px;
+    background: linear-gradient(to bottom, #e5e7eb, #9ca3af);
+    border-radius: 50%;
+    border: 4px solid #cbd5e1;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+.item-mate::before {
+    content: "";
+    position: absolute;
+    top: -28px; left: 55%;
+    width: 9px; height: 38px;
+    background: linear-gradient(to bottom, #cbd5e1 50%, #dfba17 50%);
+    border-radius: 4px 4px 0 0;
+    transform: translateX(-50%) rotate(12deg);
+    z-index: -1;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+}
+
+/* --- Pelota — CSS refinado con paneles --- */
+.item-pelota {
+    width: 68px; height: 68px;
+    background:
+        radial-gradient(circle at 32% 32%, #fff 2px, transparent 2px),
+        radial-gradient(circle at 32% 32%, #fff, #e8e8e8);
+    border-radius: 50%;
+    border: 3px solid #333;
+    position: relative;
+    box-shadow: inset 0 -8px 16px rgba(0,0,0,0.2), 0 6px 14px rgba(0,0,0,0.2);
+}
+.item-pelota::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 22px; height: 22px;
+    background: #222;
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+    z-index: 1;
+}
+
+/* --- Bandera — CSS refinado con adorno --- */
+.item-bandera {
+    width: 14px; height: 130px;
+    background: linear-gradient(to right, #6b3410, #8b4513, #6b3410);
+    border-radius: 3px;
+    position: relative;
+}
+.item-bandera::after {
+    content: '';
+    position: absolute;
+    top: 8px; left: 14px;
+    width: 48px; height: 65px;
+    background: linear-gradient(to bottom, #75aadb 33%, #fff 33%, #fff 66%, #75aadb 66%);
+    border-radius: 2px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+}
+.item-bandera::before {
+    content: '';
+    position: absolute;
+    top: -6px; left: 50%;
+    transform: translateX(-50%);
+    width: 10px; height: 10px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(255,215,0,0.6);
+}
+
+/* --- Trofeo — CSS mejorado con asas --- */
+.item-trofeo {
+    width: 56px; height: 80px;
+    background: linear-gradient(135deg, var(--gold) 0%, #e6b800 40%, var(--gold-dark) 60%, var(--gold) 100%);
+    clip-path: polygon(25% 0%, 75% 0%, 92% 55%, 55% 80%, 45% 80%, 8% 55%);
+    position: relative;
+    box-shadow: inset 0 -4px 10px rgba(0,0,0,0.2);
+}
+.item-trofeo::before {
+    content: '';
+    position: absolute;
+    left: -14px; top: 20px;
+    width: 18px; height: 30px;
+    border: 5px solid var(--gold-dark);
+    border-radius: 50% 50% 0 0;
+    border-bottom: none;
+    background: transparent;
+    clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+}
+.item-trofeo::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; left: 50%;
+    transform: translateX(-50%);
+    width: 34px; height: 20px;
+    background: linear-gradient(to bottom, #6b3410, #4a2008);
+    border-radius: 3px;
+}
+
+/* --- Teclado — CSS refinado --- */
+.item-teclado {
+    width: 100px; height: 32px;
+    background: #1a1a1a;
+    border-radius: 5px;
+    border: 2px solid #444;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+.item-teclado::after {
+    content: '';
+    position: absolute;
+    top: 4px; left: 4px; right: 4px; bottom: 4px;
+    background: repeating-linear-gradient(
+        90deg,
+        #333 0px, #333 5px,
+        #1a1a1a 5px, #1a1a1a 7px
+    );
+    border-radius: 2px;
+}
+
+/* --- Mouse — CSS refinado con scroll wheel --- */
+.item-mouse {
+    width: 32px; height: 55px;
+    background: linear-gradient(to bottom, #444 0%, #2a2a2a 30%, #333 100%);
+    border-radius: 16px 16px 8px 8px;
+    position: relative;
+    box-shadow: inset 0 2px 6px rgba(255,255,255,0.1), 0 4px 10px rgba(0,0,0,0.3);
+}
+.item-mouse::before {
+    content: '';
+    position: absolute;
+    top: 6px; left: 50%;
+    transform: translateX(-50%);
+    width: 2px; height: 20px;
+    background: #555;
+    border-radius: 1px;
+}
+.item-mouse::after {
+    content: '';
+    position: absolute;
+    top: 12px; left: 50%;
+    transform: translateX(-50%);
+    width: 6px; height: 4px;
+    background: #222;
+    border-radius: 3px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.5);
+}
+
+/* --- Libro — CSS refinado con lomo y cinta --- */
+.item-libro {
+    width: 62px; height: 85px;
+    background: linear-gradient(135deg, #c44 0%, #a33 50%, #811 100%);
+    border-radius: 3px 6px 6px 3px;
+    position: relative;
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.3);
+}
+.item-libro::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 6px; height: 100%;
+    background: linear-gradient(to right, #6b1a1a, #8b2222);
+    border-radius: 3px 0 0 3px;
+    box-shadow: 2px 0 4px rgba(0,0,0,0.2);
+}
+.item-libro::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; right: 10px;
+    width: 4px; height: 18px;
+    background: #ff4444;
+    border-radius: 1px;
+    transform: rotate(-15deg);
+}
+
+/* --- Pizza — CSS refinado con borde de masa --- */
+.item-pizza {
+    width: 68px; height: 68px;
+    background:
+        radial-gradient(circle, #d4a017 55%, #c4940f 58%, #a07008 62%, transparent 63%);
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+.item-pizza::before {
+    content: '';
+    position: absolute;
+    top: 28px; left: 28px;
+    width: 20px; height: 20px;
+    background: #c0392b;
+    border-radius: 50%;
+    box-shadow:
+        -22px 5px 0 #b83227,
+        5px -24px 0 #d4543b,
+        26px 22px 0 #a8281b;
+}
+.item-pizza::after {
+    content: '';
+    position: absolute;
+    top: 12px; left: 12px;
+    width: 8px; height: 8px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 50%;
+    box-shadow: 30px 15px 0 rgba(255,255,255,0.25);
+}
+
+/* --- Hamburguesa — CSS refinado con sésamo y lechuga --- */
+.item-hamburguesa {
+    width: 68px; height: 60px;
+    position: relative;
+    background: linear-gradient(
+        to bottom,
+        transparent 28%, #6b3a2a 28%, #6b3a2a 38%,
+        #8b0000 38%, #8b0000 48%,
+        #3a7d20 48%, #3a7d20 58%,
+        #6b3a2a 58%, #6b3a2a 68%,
+        transparent 68%
+    );
+}
+.item-hamburguesa::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 18px;
+    background:
+        radial-gradient(circle at 15% 40%, #f5e6b8 3px, transparent 3px),
+        radial-gradient(circle at 35% 30%, #f5e6b8 2.5px, transparent 2.5px),
+        radial-gradient(circle at 55% 45%, #f5e6b8 3px, transparent 3px),
+        radial-gradient(circle at 75% 35%, #f5e6b8 2px, transparent 2px),
+        radial-gradient(circle at 90% 50%, #f5e6b8 2.5px, transparent 2.5px),
+        linear-gradient(to bottom, #e6a817, #d4940f);
+    border-radius: 16px 16px 0 0;
+    box-shadow: inset 0 -4px 6px rgba(0,0,0,0.15);
+}
+.item-hamburguesa::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0; height: 17px;
+    background: linear-gradient(to bottom, #e6a817, #c4880f);
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* --- Pochoclos — CSS refinado con popcorns --- */
+.item-pochoclos {
+    width: 53px; height: 78px;
+    background: repeating-linear-gradient(
+        135deg,
+        #d4a017, #d4a017 5px,
+        #b83227 5px, #b83227 10px
+    );
+    border-radius: 6px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.item-pochoclos::before {
+    content: '';
+    position: absolute;
+    top: -12px; left: -6px; right: -6px; height: 24px;
+    background:
+        radial-gradient(circle at 15% 40%, #fff 8px, transparent 8px),
+        radial-gradient(circle at 35% 20%, #fefefe 7px, transparent 7px),
+        radial-gradient(circle at 55% 50%, #fff 9px, transparent 9px),
+        radial-gradient(circle at 72% 30%, #fafafa 7px, transparent 7px),
+        radial-gradient(circle at 88% 45%, #fff 8px, transparent 8px);
+    border-radius: 10px 10px 2px 2px;
+}
+.item-pochoclos::after {
+    content: '';
+    position: absolute;
+    top: 6px; left: 2px; right: 2px; height: 20px;
+    background:
+        radial-gradient(circle at 22% 50%, #fff 6px, transparent 6px),
+        radial-gradient(circle at 60% 40%, #fefefe 7px, transparent 7px),
+        radial-gradient(circle at 85% 55%, #fff 5px, transparent 5px);
+}
+
+/* --- Pokebola — CSS refinado con brillo --- */
+.item-pokebola {
+    width: 60px; height: 60px;
+    background: linear-gradient(to bottom, #f00 50%, #fff 50%);
+    border-radius: 50%;
+    border: 3px solid #222;
+    position: relative;
+    box-shadow: inset 0 -4px 8px rgba(0,0,0,0.2), 0 6px 14px rgba(0,0,0,0.25);
+}
+.item-pokebola::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    height: 4px;
+    background: #222;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+.item-pokebola::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 20px; height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    border: 5px solid #222;
+    z-index: 2;
+    box-shadow: 0 0 0 3px #ddd;
+}
+
+/* --- Escudo — CSS --- */
+.item-escudo {
+    width: 60px; height: 72px;
+    background: linear-gradient(135deg, #c0c0c0, #808080, #c0c0c0);
+    clip-path: polygon(50% 0, 95% 15%, 90% 55%, 50% 100%, 10% 55%, 5% 15%);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+.item-escudo::after {
+    content: '';
+    position: absolute;
+    top: 8px; left: 8px; right: 8px; bottom: 12px;
+    background: linear-gradient(135deg, #e63946, #8b0000);
+    clip-path: polygon(50% 5%, 85% 18%, 82% 52%, 50% 90%, 18% 52%, 15% 18%);
+}
+
+/* --- Flores — CSS --- */
+.item-flor {
+    width: 44px; height: 90px;
+    position: relative;
+}
+.item-flor::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 5px; height: 50px;
+    background: #228b22;
+    border-radius: 2px;
+}
+.item-flor::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 30px; height: 30px;
+    background:
+        radial-gradient(circle at 40% 40%, #ff69b4 6px, transparent 6px),
+        radial-gradient(circle at 60% 30%, #ff1493 5px, transparent 5px),
+        radial-gradient(circle at 30% 60%, #ff69b4 5px, transparent 5px),
+        radial-gradient(circle at 70% 50%, #ff1493 6px, transparent 6px),
+        radial-gradient(circle at 50% 50%, #ffb6c1 4px, transparent 4px);
+}
+
+/* --- Guitarra — wrapper (SVG inline en el componente) --- */
+.item-guitarra { width: 90px; height: 260px; }
+
+/* --- Fernet — wrapper (SVG inline) --- */
+.item-fernet { width: 42px; height: 100px; }
+
+/* --- Laptop — wrapper (SVG inline) --- */
+.item-laptop { width: 80px; height: 55px; }
+
+/* --- Celular — wrapper (SVG inline) --- */
+.item-celular { width: 48px; height: 84px; }
+
+/* --- Sable Laser — wrapper (SVG inline, ya no usa bottom:50px) --- */
+.item-sable { width: 26px; height: 250px; bottom: 12px; }
+
+/* --- Microfono — wrapper (SVG inline) --- */
+.item-microfono { width: 44px; height: 110px; }
+
+/* --- Copa Mundial — wrapper (SVG inline mejorado) --- */
+.item-cup { width: 50px; height: 100px; }
+
+/* ============================================================
+   POKEMON
+   ============================================================ */
+.item-pokemon img {
+    width: 108px; height: 108px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+/* ============================================================
+   SVG RENDERING
+   ============================================================ */
+.item svg { width: 100%; height: 100%; display: block; }
+.hat svg { width: 100%; height: 100%; display: block; }
+.glasses svg { width: 100%; height: 100%; display: block; }

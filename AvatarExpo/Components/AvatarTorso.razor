@@ -1,0 +1,14 @@
+<div id="torso" class="torso @ShirtStyle">
+    <AvatarHead ExpressionClass="@Expression"
+                 HairStyle="@HairStyle" HairColor="@HairColor"
+                 HatStyle="@HatStyle" GlassesStyle="@GlassesStyle" />
+</div>
+
+@code {
+    [Parameter] public string? ShirtStyle { get; set; }
+    [Parameter] public string? HairStyle { get; set; }
+    [Parameter] public string? HairColor { get; set; }
+    [Parameter] public string? HatStyle { get; set; }
+    [Parameter] public string? GlassesStyle { get; set; }
+    [Parameter] public string? Expression { get; set; }
+}

@@ -1,0 +1,320 @@
+<div id="arm-@Side" class="arm-container @Side">
+    <div class="arm-upper"></div>
+    <div class="arm-lower" id="forearm-@Side">
+        <div class="hand">
+            @{
+                var handItem = Side == "left" ? LeftHandItem : RightHandItem;
+            }
+
+            @* === ITEMS SVG INLINE === *@
+
+            @* Guitarra — SVG rediseñada *@
+            <div class="item item-guitarra stay-upright @(handItem == "guitarra" ? "active" : "")">
+                <svg viewBox="0 0 100 260">
+                    <defs>
+                        <radialGradient id="guitBodyGrad" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#e8b860"/>
+                            <stop offset="60%" stop-color="#c08040"/>
+                            <stop offset="100%" stop-color="#6b3410"/>
+                        </radialGradient>
+                        <linearGradient id="neckGrad" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stop-color="#3e1a08"/>
+                            <stop offset="50%" stop-color="#5a2a10"/>
+                            <stop offset="100%" stop-color="#3e1a08"/>
+                        </linearGradient>
+                    </defs>
+                    <ellipse cx="50" cy="228" rx="34" ry="30" fill="url(#guitBodyGrad)" stroke="#4a2008" stroke-width="2"/>
+                    <ellipse cx="50" cy="228" rx="28" ry="24" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1"/>
+                    <ellipse cx="50" cy="204" rx="24" ry="20" fill="url(#guitBodyGrad)" stroke="#4a2008" stroke-width="2"/>
+                    <rect x="44" y="180" width="12" height="28" rx="4" fill="url(#neckGrad)" stroke="#2a0e02" stroke-width="1"/>
+                    <circle cx="50" cy="218" r="8" fill="#1a0800"/>
+                    <circle cx="50" cy="218" r="6" fill="#0d0400"/>
+                    <circle cx="50" cy="218" r="7" fill="none" stroke="#d4a04a" stroke-width="1.2"/>
+                    <circle cx="50" cy="218" r="5" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+                    <rect x="30" y="232" width="40" height="4" rx="2" fill="#2a0e02"/>
+                    <line x1="50" y1="180" x2="50" y2="35" stroke="#222" stroke-width="4"/>
+                    <line x1="46" y1="180" x2="46" y2="35" stroke="#777" stroke-width="0.6"/>
+                    <line x1="48" y1="180" x2="48" y2="35" stroke="#777" stroke-width="0.6"/>
+                    <line x1="50" y1="180" x2="50" y2="35" stroke="#777" stroke-width="0.6"/>
+                    <line x1="52" y1="180" x2="52" y2="35" stroke="#777" stroke-width="0.6"/>
+                    <line x1="54" y1="180" x2="54" y2="35" stroke="#777" stroke-width="0.6"/>
+                    <line x1="44" y1="35" x2="56" y2="35" stroke="#333" stroke-width="5"/>
+                    <rect x="45" y="30" width="10" height="24" rx="3" fill="#111"/>
+                    <circle cx="46.5" cy="35" r="1.5" fill="#ddd"/>
+                    <circle cx="50" cy="35" r="1.5" fill="#ddd"/>
+                    <circle cx="53.5" cy="35" r="1.5" fill="#ddd"/>
+                    <circle cx="46.5" cy="40" r="1.5" fill="#ddd"/>
+                    <circle cx="50" cy="40" r="1.5" fill="#ddd"/>
+                    <circle cx="53.5" cy="40" r="1.5" fill="#ddd"/>
+                    <circle cx="46.5" cy="45" r="1.5" fill="#ddd"/>
+                    <circle cx="50" cy="45" r="1.5" fill="#ddd"/>
+                    <circle cx="53.5" cy="45" r="1.5" fill="#ddd"/>
+                    <rect x="45" y="8" width="5" height="22" rx="2" fill="#222"/>
+                    <rect x="50" y="8" width="5" height="22" rx="2" fill="#222"/>
+                </svg>
+            </div>
+
+            @* Fernet — SVG *@
+            <div class="item item-fernet stay-upright @(handItem == "fernet" ? "active" : "")">
+                <svg viewBox="0 0 100 200">
+                    <path d="M 35,10 L 35,30 Q 35,35 30,45 L 25,150 Q 25,165 35,175 L 65,175 Q 75,165 75,150 L 70,45 Q 65,35 65,30 L 65,10 Z" fill="#1a0a00" stroke="#111" stroke-width="1.5"/>
+                    <rect x="35" y="0" width="30" height="12" rx="3" fill="#c0392b"/>
+                    <rect x="28" y="50" width="44" height="70" rx="4" fill="#f5f0e0" stroke="#ddd" stroke-width="1"/>
+                    <text x="50" y="78" text-anchor="middle" font-size="10" font-weight="900" fill="#1a0a00" font-family="serif">FERNET</text>
+                    <text x="50" y="92" text-anchor="middle" font-size="6" fill="#8b4513" font-family="serif">BRANCA</text>
+                    <line x1="32" y1="100" x2="68" y2="100" stroke="#8b4513" stroke-width="0.5"/>
+                    <rect x="32" y="52" width="6" height="66" rx="1" fill="rgba(0,0,0,0.08)"/>
+                    <rect x="28" y="125" width="44" height="25" rx="2" fill="rgba(0,0,0,0.05)" stroke="rgba(0,0,0,0.1)" stroke-width="0.5"/>
+                    <rect x="32" y="129" width="36" height="4" rx="1" fill="rgba(0,0,0,0.1)"/>
+                    <rect x="32" y="137" width="36" height="4" rx="1" fill="rgba(0,0,0,0.1)"/>
+                    <rect x="32" y="145" width="20" height="2" rx="1" fill="rgba(0,0,0,0.08)"/>
+                </svg>
+            </div>
+
+            @* Laptop — SVG *@
+            <div class="item item-laptop stay-upright @(handItem == "laptop" ? "active" : "")">
+                <svg viewBox="0 0 120 90">
+                    <rect x="5" y="5" width="110" height="62" rx="4" fill="#2c2c2c" stroke="#1a1a1a" stroke-width="2"/>
+                    <rect x="10" y="10" width="100" height="52" rx="2" fill="#1a2634"/>
+                    <rect x="14" y="14" width="92" height="44" rx="1" fill="#0d1520"/>
+                    <line x1="14" y1="30" x2="106" y2="30" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+                    <rect x="50" y="20" width="20" height="2" rx="1" fill="rgba(255,255,255,0.1)"/>
+                    <circle cx="60" cy="45" r="4" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                    <rect x="-2" y="67" width="124" height="3" rx="1" fill="#444"/>
+                    <rect x="-2" y="70" width="124" height="6" rx="2" fill="#333"/>
+                    <rect x="30" y="72" width="60" height="4" rx="1" fill="#222"/>
+                    <rect x="10" y="72" width="12" height="4" rx="1" fill="rgba(100,255,100,0.3)"/>
+                </svg>
+            </div>
+
+            @* Celular — SVG *@
+            <div class="item item-celular stay-upright @(handItem == "celular" ? "active" : "")">
+                <svg viewBox="0 0 100 170">
+                    <rect x="15" y="2" width="70" height="166" rx="12" fill="#1a1a1a" stroke="#333" stroke-width="2"/>
+                    <rect x="20" y="12" width="60" height="140" rx="4" fill="#0d1520"/>
+                    <circle cx="50" cy="8" r="2" fill="#222" stroke="#444" stroke-width="0.5"/>
+                    <rect x="42" y="7" width="16" height="2" rx="1" fill="#333"/>
+                    <rect x="26" y="20" width="14" height="14" rx="3" fill="#1abc9c"/>
+                    <rect x="44" y="20" width="14" height="14" rx="3" fill="#3498db"/>
+                    <rect x="62" y="20" width="14" height="14" rx="3" fill="#9b59b6"/>
+                    <rect x="26" y="38" width="14" height="14" rx="3" fill="#e74c3c"/>
+                    <rect x="44" y="38" width="14" height="14" rx="3" fill="#f39c12"/>
+                    <rect x="62" y="38" width="14" height="14" rx="3" fill="#2ecc71"/>
+                    <rect x="26" y="56" width="32" height="2" rx="1" fill="rgba(255,255,255,0.1)"/>
+                    <rect x="26" y="62" width="40" height="2" rx="1" fill="rgba(255,255,255,0.08)"/>
+                    <circle cx="50" y="160" r="6" fill="none" stroke="#444" stroke-width="1.5"/>
+                </svg>
+            </div>
+
+            @* Sable Laser — SVG con preserveAspectRatio=none y empuñadura en mano *@
+            <div class="item item-sable @(handItem == "sable" ? "active" : "")">
+                <svg viewBox="0 0 100 280" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="bladeCore" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#c0e8ff"/>
+                            <stop offset="10%" stop-color="#fff"/>
+                            <stop offset="35%" stop-color="#40b0ff"/>
+                            <stop offset="65%" stop-color="#0080ff"/>
+                            <stop offset="100%" stop-color="#0040a0"/>
+                        </linearGradient>
+                        <filter id="bladeGlow">
+                            <feGaussianBlur stdDeviation="4" result="blur"/>
+                            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
+                    </defs>
+                    <rect x="35" y="0" width="30" height="218" rx="15" fill="url(#bladeCore)" filter="url(#bladeGlow)"/>
+                    <rect x="40" y="0" width="20" height="218" rx="10" fill="rgba(255,255,255,0.55)"/>
+                    <rect x="30" y="216" width="40" height="8" rx="3" fill="#777"/>
+                    <rect x="27" y="224" width="46" height="8" rx="4" fill="#444"/>
+                    <rect x="25" y="232" width="50" height="26" rx="6" fill="#2a2a2a" stroke="#555" stroke-width="1.5"/>
+                    <rect x="28" y="236" width="44" height="18" rx="3" fill="#1a1a1a"/>
+                    <line x1="28" y1="240" x2="72" y2="240" stroke="#3a3a3a" stroke-width="1.2"/>
+                    <line x1="28" y1="244" x2="72" y2="244" stroke="#3a3a3a" stroke-width="1.2"/>
+                    <line x1="28" y1="248" x2="72" y2="248" stroke="#3a3a3a" stroke-width="1.2"/>
+                    <rect x="22" y="258" width="56" height="10" rx="4" fill="#3a3a3a"/>
+                    <rect x="20" y="268" width="60" height="12" rx="6" fill="#555" stroke="#666" stroke-width="1"/>
+                </svg>
+            </div>
+
+            @* Microfono — SVG más grande *@
+            <div class="item item-microfono stay-upright @(handItem == "microfono" ? "active" : "")">
+                <svg viewBox="0 0 100 170" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="micBody2" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stop-color="#444"/>
+                            <stop offset="40%" stop-color="#777"/>
+                            <stop offset="60%" stop-color="#666"/>
+                            <stop offset="100%" stop-color="#333"/>
+                        </linearGradient>
+                    </defs>
+                    <rect x="32" y="20" width="36" height="55" rx="18" fill="url(#micBody2)" stroke="#222" stroke-width="2"/>
+                    <ellipse cx="50" cy="25" rx="17" ry="10" fill="#1a1a1a"/>
+                    <ellipse cx="50" cy="22" rx="13" ry="7" fill="none" stroke="#555" stroke-width="1"/>
+                    <circle cx="38" cy="19" r="2" fill="#555"/>
+                    <circle cx="50" cy="19" r="2" fill="#555"/>
+                    <circle cx="62" cy="19" r="2" fill="#555"/>
+                    <circle cx="32" cy="28" r="2" fill="#555"/>
+                    <circle cx="44" cy="28" r="2" fill="#555"/>
+                    <circle cx="56" cy="28" r="2" fill="#555"/>
+                    <circle cx="68" cy="28" r="2" fill="#555"/>
+                    <circle cx="32" cy="37" r="2" fill="#555"/>
+                    <circle cx="44" cy="37" r="2" fill="#555"/>
+                    <circle cx="56" cy="37" r="2" fill="#555"/>
+                    <circle cx="68" cy="37" r="2" fill="#555"/>
+                    <circle cx="32" cy="46" r="2" fill="#555"/>
+                    <circle cx="44" cy="46" r="2" fill="#555"/>
+                    <circle cx="56" cy="46" r="2" fill="#555"/>
+                    <circle cx="68" cy="46" r="2" fill="#555"/>
+                    <circle cx="38" cy="55" r="2" fill="#555"/>
+                    <circle cx="50" cy="55" r="2" fill="#555"/>
+                    <circle cx="62" cy="55" r="2" fill="#555"/>
+                    <rect x="28" y="73" width="44" height="8" rx="3" fill="#555"/>
+                    <rect x="26" y="81" width="48" height="55" rx="8" fill="url(#micBody2)" stroke="#222" stroke-width="2"/>
+                    <line x1="32" y1="90" x2="68" y2="90" stroke="rgba(255,255,255,0.1)" stroke-width="1.2"/>
+                    <line x1="32" y1="97" x2="68" y2="97" stroke="rgba(255,255,255,0.1)" stroke-width="1.2"/>
+                    <line x1="32" y1="104" x2="68" y2="104" stroke="rgba(255,255,255,0.1)" stroke-width="1.2"/>
+                    <line x1="32" y1="111" x2="68" y2="111" stroke="rgba(255,255,255,0.1)" stroke-width="1.2"/>
+                    <line x1="32" y1="118" x2="68" y2="118" stroke="rgba(255,255,255,0.1)" stroke-width="1.2"/>
+                    <line x1="32" y1="125" x2="68" y2="125" stroke="rgba(255,255,255,0.1)" stroke-width="1.2"/>
+                    <rect x="28" y="136" width="44" height="14" rx="5" fill="#3a3a3a" stroke="#222" stroke-width="1.5"/>
+                    <rect x="30" y="150" width="40" height="10" rx="4" fill="#4a4a4a"/>
+                    <circle cx="50" cy="155" r="4" fill="#555"/>
+                    <rect x="38" y="155" width="24" height="12" rx="4" fill="#3a3a3a" stroke="#555" stroke-width="1"/>
+                </svg>
+            </div>
+
+            @* Copa Mundial — SVG mejorado *@
+            <div class="item item-cup stay-upright @(handItem == "cup" ? "active" : "")">
+                <svg viewBox="0 0 100 200">
+                    <defs>
+                        <linearGradient id="trophyGold" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#ffe066"/>
+                            <stop offset="25%" stop-color="#ffd700"/>
+                            <stop offset="50%" stop-color="#e6b800"/>
+                            <stop offset="75%" stop-color="#ffd700"/>
+                            <stop offset="100%" stop-color="#b8860b"/>
+                        </linearGradient>
+                    </defs>
+                    <ellipse cx="50" cy="60" rx="32" ry="10" fill="url(#trophyGold)" stroke="#8b6508" stroke-width="1.5"/>
+                    <path d="M 18,60 Q 12,30 28,10 Q 40,-2 50,5 Q 60,-2 72,10 Q 88,30 82,60 Z" fill="url(#trophyGold)" stroke="#8b6508" stroke-width="1.5"/>
+                    <path d="M 28,10 Q 40,-2 50,5 Q 60,-2 72,10" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                    <path d="M 18,55 Q 10,35 22,20 Q 34,8 50,12" fill="none" stroke="#8b6508" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M 82,55 Q 90,35 78,20 Q 66,8 50,12" fill="none" stroke="#8b6508" stroke-width="2.5" stroke-linecap="round"/>
+                    <rect x="44" y="70" width="12" height="30" rx="3" fill="url(#trophyGold)" stroke="#8b6508" stroke-width="1"/>
+                    <rect x="38" y="100" width="24" height="8" rx="2" fill="#8b6508"/>
+                    <rect x="32" y="108" width="36" height="10" rx="3" fill="url(#trophyGold)" stroke="#8b6508" stroke-width="1"/>
+                    <rect x="26" y="118" width="48" height="10" rx="3" fill="#6b4a08" stroke="#4a3506" stroke-width="1"/>
+                    <rect x="22" y="128" width="56" height="10" rx="4" fill="url(#trophyGold)" stroke="#8b6508" stroke-width="1.5"/>
+                    <text x="50" y="135" text-anchor="middle" font-size="6" font-weight="900" fill="#5a3e06" font-family="serif">FIFA WORLD CUP</text>
+                    <rect x="30" y="138" width="40" height="6" rx="2" fill="#6b4a08"/>
+                </svg>
+            </div>
+
+            @* Tambor — SVG *@
+            <div class="item item-tambor stay-upright @(handItem == "tambor" ? "active" : "")">
+                <svg viewBox="0 0 80 110">
+                    <rect x="10" y="20" width="60" height="70" rx="4" fill="#c0392b" stroke="#7b241c" stroke-width="2"/>
+                    <rect x="10" y="20" width="60" height="12" rx="2" fill="#f5f5f5"/>
+                    <rect x="10" y="78" width="60" height="12" rx="2" fill="#f5f5f5"/>
+                    <circle cx="40" cy="55" r="22" fill="none" stroke="#7b241c" stroke-width="1.5"/>
+                    <line x1="40" y1="33" x2="40" y2="77" stroke="#7b241c" stroke-width="1" opacity="0.3"/>
+                    <line x1="18" y1="55" x2="62" y2="55" stroke="#7b241c" stroke-width="1" opacity="0.3"/>
+                </svg>
+            </div>
+
+            @* Bastón — SVG *@
+            <div class="item item-baston stay-upright @(handItem == "baston" ? "active" : "")">
+                <svg viewBox="0 0 40 160">
+                    <rect x="16" y="30" width="8" height="130" rx="3" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+                    <path d="M 10,30 C 10,10 30,10 30,30" fill="none" stroke="url(#bastonGold)" stroke-width="7" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="bastonGold" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#ffd700"/>
+                            <stop offset="100%" stop-color="#b8860b"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+
+            @* Antorcha — SVG *@
+            <div class="item item-antorcha stay-upright @(handItem == "antorcha" ? "active" : "")">
+                <svg viewBox="0 0 50 160">
+                    <defs>
+                        <radialGradient id="flameGrad" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#fff"/>
+                            <stop offset="20%" stop-color="#ffff00"/>
+                            <stop offset="60%" stop-color="#ff6600"/>
+                            <stop offset="100%" stop-color="#cc0000" stop-opacity="0.3"/>
+                        </radialGradient>
+                    </defs>
+                    <rect x="20" y="70" width="10" height="90" rx="2" fill="#5a3e1b" stroke="#3e2a10" stroke-width="1"/>
+                    <rect x="15" y="65" width="20" height="8" rx="3" fill="#8b6914"/>
+                    <ellipse cx="25" cy="55" rx="18" ry="30" fill="url(#flameGrad)" opacity="0.8"/>
+                    <ellipse cx="25" cy="50" rx="10" ry="20" fill="#ffcc00" opacity="0.6"/>
+                </svg>
+            </div>
+
+            @* === ITEMS CSS REFINADO === *@
+
+            @* Water *@
+            <div class="item item-water stay-upright @(handItem == "water" ? "active" : "")"></div>
+
+            @* Mate *@
+            <div class="item item-mate stay-upright @(handItem == "mate" ? "active" : "")"></div>
+
+            @* Pelota *@
+            <div class="item item-pelota stay-upright @(handItem == "pelota" ? "active" : "")"></div>
+
+            @* Bandera *@
+            <div class="item item-bandera stay-upright @(handItem == "bandera" ? "active" : "")"></div>
+
+            @* Trofeo *@
+            <div class="item item-trofeo stay-upright @(handItem == "trofeo" ? "active" : "")"></div>
+
+            @* Teclado *@
+            <div class="item item-teclado stay-upright @(handItem == "teclado" ? "active" : "")"></div>
+
+            @* Mouse *@
+            <div class="item item-mouse stay-upright @(handItem == "mouse" ? "active" : "")"></div>
+
+            @* Libro *@
+            <div class="item item-libro stay-upright @(handItem == "libro" ? "active" : "")"></div>
+
+            @* Pizza *@
+            <div class="item item-pizza stay-upright @(handItem == "pizza" ? "active" : "")"></div>
+
+            @* Hamburguesa *@
+            <div class="item item-hamburguesa stay-upright @(handItem == "hamburguesa" ? "active" : "")"></div>
+
+            @* Pochoclos *@
+            <div class="item item-pochoclos stay-upright @(handItem == "pochoclos" ? "active" : "")"></div>
+
+            @* Pokebola *@
+            <div class="item item-pokebola stay-upright @(handItem == "pokebola" ? "active" : "")"></div>
+
+            @* Escudo — CSS *@
+            <div class="item item-escudo stay-upright @(handItem == "escudo" ? "active" : "")"></div>
+
+            @* Flores — CSS *@
+            <div class="item item-flor stay-upright @(handItem == "flor" ? "active" : "")"></div>
+
+            @* Pokémon *@
+            @if (handItem != null && handItem.StartsWith("pokemon-"))
+            {
+                var pokemonName = handItem.Replace("pokemon-", "");
+                <div class="item item-pokemon stay-upright active">
+                    <img src="imgs/Pokemon/@(pokemonName).png" alt="@pokemonName" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string Side { get; set; } = "left";
+    [Parameter] public double ShoulderRotation { get; set; }
+    [Parameter] public double ElbowRotation { get; set; }
+    [Parameter] public bool IsVisible { get; set; } = true;
+    [Parameter] public string? LeftHandItem { get; set; }
+    [Parameter] public string? RightHandItem { get; set; }
+}

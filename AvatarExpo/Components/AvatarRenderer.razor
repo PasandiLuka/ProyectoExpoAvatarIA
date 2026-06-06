@@ -1,0 +1,225 @@
+@inject AvatarState AvatarState
+@inject TrackingService TrackingService
+@inject IJSRuntime JS
+@implements IDisposable
+
+<div class="panel-central relative">
+    <h2 class="absolute top-4 left-4 text-xl font-bold bg-principal/50 px-3 py-1 rounded z-50" style="color: #ffd700;">Avatar Render</h2>
+
+    <div class="avatar-container">
+        <div id="avatar-wrapper" class="body-wrapper">
+            <AvatarTorso ShirtStyle="@AvatarState.ShirtStyle"
+                          HairStyle="@AvatarState.HairStyle"
+                          HairColor="@AvatarState.HairColor"
+                          HatStyle="@AvatarState.HatStyle"
+                          GlassesStyle="@AvatarState.GlassesStyle"
+                          Expression="@ExpressionClass" />
+
+            <AvatarArm Side="left"
+                        IsVisible="IsLeftHandVisible"
+                        LeftHandItem="@AvatarState.LeftHandItem" />
+
+            <AvatarArm Side="right"
+                        IsVisible="IsRightHandVisible"
+                        RightHandItem="@AvatarState.RightHandItem" />
+        </div>
+    </div>
+</div>
+
+@code {
+    private double LeftShoulderAngle;
+    private double LeftElbowAngle;
+    private double RightShoulderAngle;
+    private double RightElbowAngle;
+    private bool IsLeftHandVisible = true;
+    private bool IsRightHandVisible = true;
+
+    private double TorsoYAngle;
+    private double TorsoZAngle;
+
+    private double _headTiltZ;
+
+    private string ExpressionClass = "";
+    private int _frameLogCounter;
+
+    private bool _landmarksActive;
+    private System.Threading.Timer? _landmarkTimeout;
+
+    private const double LerpFactor = 0.5;  
+
+    protected override void OnInitialized()
+    {
+        AvatarState.OnChange += HandleAvatarStateChange;
+        TrackingService.OnLandmarksReceived += HandleLandmarks;
+        TrackingService.OnTrackingStateChanged += HandleTrackingState;
+
+        _landmarkTimeout = new System.Threading.Timer(_ =>
+        {
+            _landmarksActive = false;
+            InvokeAsync(StateHasChanged);
+        }, null, Timeout.Infinite, Timeout.Infinite);
+    }
+
+    public void Dispose()
+    {
+        AvatarState.OnChange -= HandleAvatarStateChange;
+        TrackingService.OnLandmarksReceived -= HandleLandmarks;
+        TrackingService.OnTrackingStateChanged -= HandleTrackingState;
+        _landmarkTimeout?.Dispose();
+    }
+
+    private void HandleAvatarStateChange()
+    {
+        if (!_landmarksActive)
+        {
+            TorsoYAngle = AvatarState.DemoTorsoY;
+            LeftShoulderAngle = AvatarState.DemoLeftShoulder;
+            LeftElbowAngle = AvatarState.DemoLeftElbow;
+            RightShoulderAngle = AvatarState.DemoRightShoulder;
+            RightElbowAngle = AvatarState.DemoRightElbow;
+            _headTiltZ = AvatarState.DemoHeadTilt;
+
+            _ = JS.InvokeVoidAsync("avatarAnim.update", new
+            {
+                leftShoulder = LeftShoulderAngle,
+                leftElbow = LeftElbowAngle,
+                rightShoulder = RightShoulderAngle,
+                rightElbow = RightElbowAngle,
+                torsoY = TorsoYAngle,
+                torsoZ = TorsoZAngle,
+                headTilt = _headTiltZ
+            });
+        }
+
+        var prevExpression = ExpressionClass;
+        ExpressionClass = AvatarState.Expression switch
+        {
+            "smile" => "exp-smile",
+            "surprise" => "exp-surprise",
+            "angry" => "exp-angry",
+            _ => ""
+        };
+
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void HandleTrackingState(bool isTracking)
+    {
+        if (!isTracking)
+        {
+            _landmarksActive = false;
+            _landmarkTimeout?.Change(Timeout.Infinite, Timeout.Infinite);
+            ResetToNeutral();
+        }
+    }
+
+    private void ResetToNeutral()
+    {
+        LeftShoulderAngle = 0;
+        LeftElbowAngle = 0;
+        RightShoulderAngle = 0;
+        RightElbowAngle = 0;
+        TorsoYAngle = 0;
+        TorsoZAngle = 0;
+        _headTiltZ = 0;
+        ExpressionClass = "";
+        IsLeftHandVisible = true;
+        IsRightHandVisible = true;
+        _ = JS.InvokeVoidAsync("avatarAnim.resetToNeutral");
+        InvokeAsync(StateHasChanged);
+    }
+
+    private static double Lerp(double current, double target, double t)
+    {
+        return current + (target - current) * t;
+    }
+
+    private void HandleLandmarks(ProcessedLandmarks data)
+    {
+        try
+        {
+            _landmarksActive = true;
+            _landmarkTimeout?.Change(2000, Timeout.Infinite);
+            double lsX = 1.0 - data.LSx;
+            double lsY = data.LSy;
+            double leX = 1.0 - data.LEx;
+            double leY = data.LEy;
+            double lwX = 1.0 - data.LWx;
+            double lwY = data.LWy;
+
+            double rsX = 1.0 - data.RSx;
+            double rsY = data.RSy;
+            double reX = 1.0 - data.REx;
+            double reY = data.REy;
+            double rwX = 1.0 - data.RWx;
+            double rwY = data.RWy;
+
+            double leftTargetShoulder = Math.Atan2(leY - lsY, leX - lsX) * (180.0 / Math.PI) - 90.0;
+            double leftGlobalElbow = Math.Atan2(lwY - leY, lwX - leX) * (180.0 / Math.PI) - 90.0;
+            double leftTargetElbow = leftGlobalElbow - leftTargetShoulder;
+
+            double rightTargetShoulder = Math.Atan2(reY - rsY, reX - rsX) * (180.0 / Math.PI) - 90.0;
+            double rightGlobalElbow = Math.Atan2(rwY - reY, rwX - reX) * (180.0 / Math.PI) - 90.0;
+            double rightTargetElbow = rightGlobalElbow - rightTargetShoulder;
+
+            if (double.IsNaN(leftTargetShoulder) || double.IsInfinity(leftTargetShoulder) ||
+                double.IsNaN(rightTargetShoulder) || double.IsInfinity(rightTargetShoulder))
+            {
+                Console.WriteLine("[AvatarRenderer] Warning: NaN/Infinity angle detected, skipping frame");
+                return;
+            }
+
+            LeftShoulderAngle = Lerp(LeftShoulderAngle, leftTargetShoulder, LerpFactor);
+            LeftElbowAngle = Lerp(LeftElbowAngle, leftTargetElbow, LerpFactor);
+            RightShoulderAngle = Lerp(RightShoulderAngle, rightTargetShoulder, LerpFactor);
+            RightElbowAngle = Lerp(RightElbowAngle, rightTargetElbow, LerpFactor);
+
+            IsLeftHandVisible = data.LeftHandVis >= 0.5;
+            IsRightHandVisible = data.RightHandVis >= 0.5;
+
+            double depthDiff = data.RSz - data.LSz;
+            double targetTorsoY = Math.Clamp(depthDiff * 50.0, -30, 30);
+            TorsoYAngle = Lerp(TorsoYAngle, targetTorsoY, LerpFactor);
+
+            double lateralDiff = data.RSy - data.LSy;
+            double targetTorsoZ = Math.Clamp(lateralDiff * 30.0, -5, 5);
+            TorsoZAngle = Lerp(TorsoZAngle, targetTorsoZ, LerpFactor);
+
+            double noseX = 1.0 - data.NoseX;
+            double midShoulderX = (lsX + rsX) / 2.0;
+            double targetHeadTiltZ = Math.Clamp((noseX - midShoulderX) * 60.0, -15, 15);
+            _headTiltZ = Lerp(_headTiltZ, targetHeadTiltZ, LerpFactor);
+
+            var prevExpression = ExpressionClass;
+            ExpressionClass = data.Expression switch
+            {
+                "smile" => "exp-smile",
+                "surprise" => "exp-surprise",
+                "angry" => "exp-angry",
+                _ => ""
+            };
+
+            _ = JS.InvokeVoidAsync("avatarAnim.update", new
+            {
+                leftShoulder = LeftShoulderAngle,
+                leftElbow = LeftElbowAngle,
+                rightShoulder = RightShoulderAngle,
+                rightElbow = RightElbowAngle,
+                torsoY = TorsoYAngle,
+                torsoZ = TorsoZAngle,
+                headTilt = _headTiltZ
+            });
+
+            _frameLogCounter++;
+            if (_frameLogCounter % 60 == 0)
+                Console.WriteLine($"[AvatarRenderer] frame={_frameLogCounter} | LS={LeftShoulderAngle:F1}° RS={RightShoulderAngle:F1}° | TorsoY={TorsoYAngle:F1}° Head={_headTiltZ:F1}° | Exp={data.Expression}");
+
+            if (ExpressionClass != prevExpression)
+                InvokeAsync(StateHasChanged);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[AvatarRenderer] HandleLandmarks error: {ex.Message}");
+        }
+    }
+}

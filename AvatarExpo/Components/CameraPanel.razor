@@ -1,0 +1,472 @@
+@inject CameraService CameraService
+@inject TrackingService TrackingService
+@inject AvatarState AvatarState
+@inject IJSRuntime JS
+@implements IDisposable
+
+<div class="panel panel-izquierdo flex flex-col">
+    <h2 class="seccion-titulo mt-0">Input Camara</h2>
+    <div class="w-full h-48 bg-black rounded-lg border-2 flex items-center justify-center relative overflow-hidden" style="border-color: rgba(255, 215, 0, 0.5);">
+        <video id="webcam-video" autoplay playsinline muted
+               class="w-full h-full object-cover absolute inset-0"
+               style="display: none;"></video>
+        <canvas id="skeleton-canvas" width="640" height="480"
+                 class="w-full h-full object-cover absolute inset-0"
+                 style="pointer-events: none;"></canvas>
+        <span class="@(IsTracking ? "hidden" : "text-white/50") text-sm">Webcam Feed</span>
+        <div class="absolute bottom-2 text-xs font-mono @(IsTracking ? "text-green-400" : "text-red-400")">
+            Tracking: @(IsTracking ? "Activo" : "Inactivo")
+        </div>
+        <div class="absolute bottom-6 text-xs font-mono text-white/50">
+            FPS: @TrackingService.CurrentFps | Landmarks: @(_hasRecentLandmarks ? "OK" : "Sin datos")
+        </div>
+    </div>
+
+    <div class="flex gap-2 mt-4">
+        <button class="btn-custom flex-1 text-center @(IsTracking ? "bg-red-800/50" : "bg-green-800/50")"
+                @onclick="ToggleTracking">
+            @(IsTracking ? "Detener" : "Iniciar Tracking")
+        </button>
+        <button class="btn-custom flex-1 text-center @(IsCalibrating ? "bg-yellow-700/50" : "")"
+                @onclick="Calibrate" disabled="@(!IsTracking || IsCalibrating)">
+            @(IsCalibrating ? $"Calibrando... {CalibrationCountdown}" : "Calibrar")
+        </button>
+    </div>
+
+    <div class="mt-2 relative">
+        @if (_isWebSocketConnected)
+        {
+            <button class="btn-custom w-full text-center bg-principal/60"
+                    @onclick="TakeScreenshot" disabled="@(_isCapturing)">
+                @(_isCapturing ? (_isCountingDown ? $"Sacar Foto ({_countdownRemaining})" : _captureStatus) : "Sacar Foto")
+            </button>
+        }
+        else
+        {
+            <button class="btn-custom w-full text-center opacity-50 cursor-not-allowed" disabled>
+                Sin conexion
+            </button>
+        }
+        @if (_isCapturing)
+        {
+            <div class="absolute inset-0 bg-black/60 rounded flex items-center justify-center text-sm"
+                 style="color: rgba(192, 192, 192, 0.7);">
+                @_captureStatus
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(_lastScreenshotUrl) && !_isCapturing)
+        {
+            <div class="text-xs mt-1 text-green-400 text-center">Foto subida</div>
+        }
+        @if (!string.IsNullOrEmpty(_lastError) && !_isCapturing)
+        {
+            <div class="text-xs mt-1 text-red-400 text-center">@_lastError</div>
+        }
+    </div>
+
+    @if (!IsTracking && IsDemoMode)
+    {
+        <h2 class="seccion-titulo mt-4">Simulador Manual (Demo)</h2>
+        <p class="text-xs mb-2" style="color: rgba(192,192,192,0.7);">Modo demo: usa los sliders para simular movimiento</p>
+
+        <label class="text-xs">Expresion Facial</label>
+        <div class="grid grid-cols-2 gap-1 mb-3">
+            <button class="btn-custom m-0 text-center text-xs" @onclick="SetExpNormal">Normal</button>
+            <button class="btn-custom m-0 text-center text-xs" @onclick="SetExpSmile">Sonrisa</button>
+            <button class="btn-custom m-0 text-center text-xs" @onclick="SetExpSurprise">Sorpresa</button>
+            <button class="btn-custom m-0 text-center text-xs" @onclick="SetExpAngry">Enojo</button>
+        </div>
+
+        <label class="text-xs">Rotacion Torso (3D Y)</label>
+        <input type="range" min="-45" max="45" @oninput="OnTorsoInput" value="@TorsoSlider" class="w-full mb-2" />
+
+        <label class="text-xs">Inclinacion Cabeza (Z)</label>
+        <input type="range" min="-30" max="30" @oninput="OnHeadInput" value="@HeadSlider" class="w-full mb-4" />
+
+        <div class="grid grid-cols-2 gap-2 text-xs text-center">
+            <div>
+                <label>Brazo Izq (Hombro)</label>
+                <input type="range" min="-180" max="180" @bind="LeftArmSlider" @bind:event="oninput" @bind:after="SyncSlidersToState" class="w-full" />
+                <label>Antebrazo Izq (Codo)</label>
+                <input type="range" min="-150" max="150" @bind="LeftForearmSlider" @bind:event="oninput" @bind:after="SyncSlidersToState" class="w-full" />
+            </div>
+            <div>
+                <label>Brazo Der (Hombro)</label>
+                <input type="range" min="-180" max="180" @bind="RightArmSlider" @bind:event="oninput" @bind:after="SyncSlidersToState" class="w-full" />
+                <label>Antebrazo Der (Codo)</label>
+                <input type="range" min="-150" max="150" @bind="RightForearmSlider" @bind:event="oninput" @bind:after="SyncSlidersToState" class="w-full" />
+            </div>
+        </div>
+    }
+
+    <div class="scale-menu mt-auto">
+        <button class="btn-custom text-center text-xs scale-menu-toggle" @onclick="ToggleScaleMenu">
+            ≡ Ajustes
+        </button>
+        <div class="scale-menu-content @(ScaleMenuOpen ? "open" : "")">
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs">0.5</span>
+                <input type="range" min="0.5" max="3" step="0.1"
+                       value="@CurrentScale"
+                       @oninput="OnScaleInput"
+                       class="flex-1" />
+                <span class="text-xs">3.0</span>
+            </div>
+            <div class="text-xs text-center mt-1" style="color: rgba(192,192,192,0.7);">
+                @($"{(CurrentScale):0.0}x")
+            </div>
+            <button class="btn-custom text-center text-xs mt-2 @(IsScaleManual ? "" : "bg-white/30")"
+                    @onclick="SetAutoScale">
+                @(IsScaleManual ? "Auto (volver al tamaño dinamico)" : "Auto activado")
+            </button>
+            <div class="border-t mt-2 pt-2" style="border-color: rgba(192,192,192,0.15);">
+                <div class="flex items-center gap-2">
+                    <span class="text-xs">Delay foto: 0</span>
+                    <input type="range" min="0" max="10" step="1"
+                           value="@_captureDelaySeconds"
+                           @oninput="OnDelayInput"
+                           disabled="@(!IsTracking)"
+                           class="flex-1" />
+                    <span class="text-xs">10</span>
+                </div>
+                <div class="text-xs text-center mt-1" style="color: rgba(192,192,192,0.7);">
+                    @($"{_captureDelaySeconds}s")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private bool IsTracking;
+    private bool IsDemoMode = true;
+    private bool IsCalibrating;
+    private int CalibrationCountdown = 3;
+    private bool _hasRecentLandmarks;
+    private System.Threading.Timer? _landmarkTimeout;
+
+    private bool ScaleMenuOpen;
+    private double CurrentScale = 2.0;
+    private bool IsScaleManual;
+
+    private bool _isCapturing;
+    private bool _isCountingDown;
+    private string _captureStatus = "";
+    private string _lastScreenshotUrl = "";
+    private string _lastError = "";
+    private int _captureDelaySeconds;
+    private int _countdownRemaining;
+    private bool _isWebSocketConnected;
+
+    private CancellationTokenSource? _captureCts;
+    private Action<bool, string>? _screenshotHandler;
+
+    private double TorsoSlider;
+    private double HeadSlider;
+    private double LeftArmSlider;
+    private double LeftForearmSlider;
+    private double RightArmSlider;
+    private double RightForearmSlider;
+
+    private void SyncSlidersToState()
+    {
+        AvatarState.DemoLeftShoulder = LeftArmSlider;
+        AvatarState.DemoLeftElbow = LeftForearmSlider;
+        AvatarState.DemoRightShoulder = RightArmSlider;
+        AvatarState.DemoRightElbow = RightForearmSlider;
+        AvatarState.NotifyStateChanged();
+    }
+
+    private void OnTorsoInput(ChangeEventArgs e)
+    {
+        var raw = e.Value?.ToString() ?? "";
+        if (double.TryParse(raw, System.Globalization.CultureInfo.InvariantCulture, out var val))
+        {
+            TorsoSlider = val;
+            AvatarState.DemoTorsoY = val;
+            AvatarState.NotifyStateChanged();
+        }
+        else
+        {
+            Console.WriteLine($"[CameraPanel] OnTorsoInput parse failed: '{raw}'");
+        }
+    }
+
+    private void OnHeadInput(ChangeEventArgs e)
+    {
+        var raw = e.Value?.ToString() ?? "";
+        if (double.TryParse(raw, System.Globalization.CultureInfo.InvariantCulture, out var val))
+        {
+            HeadSlider = val;
+            AvatarState.DemoHeadTilt = val;
+            AvatarState.NotifyStateChanged();
+        }
+        else
+        {
+            Console.WriteLine($"[CameraPanel] OnHeadInput parse failed: '{raw}'");
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        AvatarState.OnChange += StateHasChanged;
+        TrackingService.OnLandmarksReceived += HandleLandmarkReceived;
+        TrackingService.OnFpsChanged += HandleFpsChanged;
+        TrackingService.OnConnectionChanged += HandleConnectionChanged;
+
+        _landmarkTimeout = new System.Threading.Timer(_ =>
+        {
+            _hasRecentLandmarks = false;
+            InvokeAsync(StateHasChanged);
+        }, null, Timeout.Infinite, Timeout.Infinite);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await TrackingService.Connect();
+        _ = JS.InvokeVoidAsync("avatarCamera.initDisplayCaptureEarly");
+    }
+
+    public void Dispose()
+    {
+        AvatarState.OnChange -= StateHasChanged;
+        TrackingService.OnLandmarksReceived -= HandleLandmarkReceived;
+        TrackingService.OnFpsChanged -= HandleFpsChanged;
+        TrackingService.OnConnectionChanged -= HandleConnectionChanged;
+        _landmarkTimeout?.Dispose();
+    }
+
+    private void HandleConnectionChanged(bool connected)
+    {
+        _isWebSocketConnected = connected;
+        if (!connected)
+        {
+            _lastScreenshotUrl = "";
+        }
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void HandleLandmarkReceived(ProcessedLandmarks _)
+    {
+        if (!_hasRecentLandmarks)
+        {
+            _hasRecentLandmarks = true;
+            InvokeAsync(StateHasChanged);
+        }
+        _landmarkTimeout?.Change(3000, Timeout.Infinite);
+    }
+
+    private int _fpsLogCounter;
+    private void HandleFpsChanged(int fps)
+    {
+        _fpsLogCounter++;
+        if (_fpsLogCounter % 10 == 0)
+            InvokeAsync(StateHasChanged);
+    }
+
+    private async Task ToggleTracking()
+    {
+        if (IsTracking)
+        {
+            await CameraService.StopCamera();
+            IsTracking = false;
+            IsDemoMode = true;
+            _captureDelaySeconds = 0;
+            await JS.InvokeVoidAsync("eval",
+                "(function(){var c=document.getElementById('skeleton-canvas');if(c)c.getContext('2d').clearRect(0,0,640,480);})()");
+        }
+        else
+        {
+            try
+            {
+                await CameraService.StartCamera();
+                IsTracking = true;
+                IsDemoMode = false;
+                _captureDelaySeconds = 5;
+            }
+            catch (Exception)
+            {
+                IsDemoMode = true;
+            }
+        }
+    }
+
+    private async Task Calibrate()
+    {
+        IsCalibrating = true;
+        CalibrationCountdown = 3;
+
+        for (int i = 3; i >= 0; i--)
+        {
+            CalibrationCountdown = i;
+            StateHasChanged();
+            await Task.Delay(1000);
+        }
+
+        await TrackingService.Calibrate();
+        IsCalibrating = false;
+        StateHasChanged();
+    }
+
+    private void ToggleScaleMenu()
+    {
+        ScaleMenuOpen = !ScaleMenuOpen;
+    }
+
+    private async Task OnScaleInput(ChangeEventArgs e)
+    {
+        var raw = e.Value?.ToString() ?? "";
+        if (double.TryParse(raw, System.Globalization.CultureInfo.InvariantCulture, out var val))
+        {
+            CurrentScale = val;
+            IsScaleManual = true;
+            await JS.InvokeVoidAsync("avatarAnim.setManualScale", val);
+        }
+    }
+
+    private async Task SetAutoScale()
+    {
+        IsScaleManual = false;
+        await JS.InvokeVoidAsync("avatarAnim.setManualScale", (object?)null);
+    }
+
+    private void OnDelayInput(ChangeEventArgs e)
+    {
+        var raw = e.Value?.ToString() ?? "";
+        if (int.TryParse(raw, out var val))
+        {
+            _captureDelaySeconds = Math.Clamp(val, 0, 10);
+        }
+    }
+
+    private async Task TakeScreenshot()
+    {
+        if (_isCapturing)
+        {
+            if (_isCountingDown)
+            {
+                _captureCts?.Cancel();
+            }
+            return;
+        }
+
+        _isCapturing = true;
+        _isCountingDown = true;
+        _lastScreenshotUrl = "";
+        _lastError = "";
+        _captureStatus = "Preparando...";
+
+        if (_screenshotHandler != null)
+        {
+            TrackingService.OnScreenshotResult -= _screenshotHandler;
+            _screenshotHandler = null;
+        }
+
+        _captureCts = new CancellationTokenSource();
+        var ct = _captureCts.Token;
+
+        try
+        {
+            if (_captureDelaySeconds > 0)
+            {
+                _countdownRemaining = _captureDelaySeconds;
+                while (_countdownRemaining > 0)
+                {
+                    StateHasChanged();
+                    try
+                    {
+                        await Task.Delay(1000, ct);
+                    }
+                    catch (OperationCanceledException)
+                    {
+                        EndCapture(null, null);
+                        return;
+                    }
+                    _countdownRemaining--;
+                }
+                if (ct.IsCancellationRequested) { EndCapture(null, null); return; }
+            }
+        }
+        catch (Exception)
+        {
+            EndCapture(null, "Error en countdown");
+            return;
+        }
+
+        _isCountingDown = false;
+        _captureStatus = "Capturando avatar...";
+        StateHasChanged();
+
+        try
+        {
+            var base64 = await CameraService.CaptureScreenshot();
+            _captureStatus = "Subiendo a Drive...";
+            StateHasChanged();
+
+            var resultTcs = new TaskCompletionSource<bool>();
+            var captureCts = _captureCts;
+            Action<bool, string>? handler = null;
+            handler = (success, url) =>
+            {
+                if (captureCts.IsCancellationRequested) return;
+                TrackingService.OnScreenshotResult -= handler;
+                _screenshotHandler = null;
+                if (success) { _lastScreenshotUrl = url; _lastError = ""; }
+                else { _lastError = "Error al subir la foto"; _lastScreenshotUrl = ""; }
+                _isCapturing = false;
+                _isCountingDown = false;
+                captureCts.Cancel();
+                resultTcs.TrySetResult(true);
+            };
+            _screenshotHandler = handler;
+            TrackingService.OnScreenshotResult += handler;
+
+            var sent = await TrackingService.SendScreenshot(base64);
+            if (!sent)
+            {
+                TrackingService.OnScreenshotResult -= handler;
+                _screenshotHandler = null;
+                EndCapture(null, "Error de conexion");
+                return;
+            }
+
+            var timeoutTask = Task.Delay(30000);
+            var completed = await Task.WhenAny(resultTcs.Task, timeoutTask);
+
+            if (completed == timeoutTask)
+            {
+                TrackingService.OnScreenshotResult -= handler;
+                _screenshotHandler = null;
+                EndCapture(null, "Timeout al subir la foto");
+            }
+            else
+            {
+                StateHasChanged();
+            }
+        }
+        catch (Exception ex)
+        {
+            EndCapture(null, $"Error: {ex.Message}");
+        }
+    }
+
+    private void EndCapture(string? url, string? error)
+    {
+        _captureCts?.Cancel();
+        if (_screenshotHandler != null)
+        {
+            TrackingService.OnScreenshotResult -= _screenshotHandler;
+            _screenshotHandler = null;
+        }
+        _isCapturing = false;
+        _isCountingDown = false;
+        _lastScreenshotUrl = url ?? "";
+        _lastError = error ?? "";
+        StateHasChanged();
+    }
+
+    private void SetExpNormal() { AvatarState.Expression = "neutral"; AvatarState.NotifyStateChanged(); }
+    private void SetExpSmile() { AvatarState.Expression = "smile"; AvatarState.NotifyStateChanged(); }
+    private void SetExpSurprise() { AvatarState.Expression = "surprise"; AvatarState.NotifyStateChanged(); }
+    private void SetExpAngry() { AvatarState.Expression = "angry"; AvatarState.NotifyStateChanged(); }
+}
