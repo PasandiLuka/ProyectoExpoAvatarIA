@@ -1,13 +1,15 @@
 import asyncio
 import json
 import base64
+import os
 from datetime import datetime, timezone
 import cv2
 import numpy as np
 import mediapipe as mp
 from websockets.asyncio.server import serve
+from websockets.exceptions import ConnectionClosed
 
-from google_drive import upload_to_drive
+from google_drive import upload_to_drive_with_retry, mark_pending, mark_uploaded, resume_pending_uploads
 
 mp_pose = mp.solutions.pose
 mp_face = mp.solutions.face_mesh
@@ -116,6 +118,34 @@ def extract_pose(pose_landmarks, frame_width, frame_height):
     return p, lh_vis, rh_vis
 
 
+async def upload_and_notify(websocket, img_bytes, filename, local_path):
+    try:
+        success, drive_url = await upload_to_drive_with_retry(img_bytes, filename)
+        if success:
+            mark_uploaded(local_path)
+            try:
+                await websocket.send(json.dumps({
+                    "type": "drive_sync_result",
+                    "filename": filename,
+                    "success": True,
+                    "url": drive_url
+                }))
+            except ConnectionClosed:
+                print(f"[Drive] Cliente desconectado antes de notificar sync para {filename}")
+        else:
+            try:
+                await websocket.send(json.dumps({
+                    "type": "drive_sync_result",
+                    "filename": filename,
+                    "success": False,
+                    "url": ""
+                }))
+            except ConnectionClosed:
+                print(f"[Drive] Cliente desconectado antes de notificar fallo para {filename}")
+    except Exception as e:
+        print(f"[Drive] Error en upload_and_notify para {filename}: {e}")
+
+
 async def handle_connection(websocket):
     print("Client connected")
     try:
@@ -136,19 +166,26 @@ async def handle_connection(websocket):
                         img_bytes = base64.b64decode(data["image"].split(",")[-1])
                         filename = data.get("filename", f"avatar-{datetime.now(timezone.utc):%Y%m%d-%H%M%S}.png")
                         try:
-                            result = upload_to_drive(img_bytes, filename)
+                            photos_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "FotosAvatares"))
+                            os.makedirs(photos_dir, exist_ok=True)
+                            local_path = os.path.join(photos_dir, filename)
+                            with open(local_path, "wb") as f:
+                                f.write(img_bytes)
+                            print(f"[Screenshot] Guardado local: {local_path}")
+                            mark_pending(local_path)
                             await websocket.send(json.dumps({
                                 "type": "screenshot_result",
-                                "success": result["success"],
-                                "url": result.get("url", "")
+                                "success": True,
+                                "url": f"local:FotosAvatares/{filename}"
                             }))
-                        except Exception as e:
+                            asyncio.create_task(upload_and_notify(websocket, img_bytes, filename, local_path))
+                        except (IOError, OSError) as e:
                             await websocket.send(json.dumps({
                                 "type": "screenshot_result",
                                 "success": False,
                                 "url": ""
                             }))
-                            print(f"Screenshot upload error: {e}")
+                            print(f"Screenshot local save error: {e}")
                         continue
                 except (json.JSONDecodeError, KeyError):
                     pass
@@ -213,6 +250,7 @@ async def handle_connection(websocket):
 
 async def main():
     print("Avatar Tracking Server starting on ws://0.0.0.0:8765")
+    asyncio.create_task(resume_pending_uploads())
     async with serve(handle_connection, "0.0.0.0", 8765) as server:
         await server.serve_forever()
 

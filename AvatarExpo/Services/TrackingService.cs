@@ -36,6 +36,7 @@ public class TrackingService : IAsyncDisposable
     public event Action<bool>? OnTrackingStateChanged;
     public event Action<bool, string>? OnScreenshotResult;
     public event Action<bool>? OnConnectionChanged;
+    public event Action<string, bool, string>? OnDriveSyncResult;
 
     private CameraService? _cameraService;
     private CalibrationOffset? _calibration;
@@ -141,6 +142,14 @@ public class TrackingService : IAsyncDisposable
                                 var success = root.GetProperty("success").GetBoolean();
                                 var url = root.TryGetProperty("url", out var urlEl) ? urlEl.GetString() ?? "" : "";
                                 OnScreenshotResult?.Invoke(success, url);
+                                continue;
+                            }
+                            if (type == "drive_sync_result")
+                            {
+                                var filename = root.TryGetProperty("filename", out var fnEl) ? fnEl.GetString() ?? "" : "";
+                                var success = root.GetProperty("success").GetBoolean();
+                                var url = root.TryGetProperty("url", out var drUrlEl) ? drUrlEl.GetString() ?? "" : "";
+                                OnDriveSyncResult?.Invoke(filename, success, url);
                                 continue;
                             }
                         }

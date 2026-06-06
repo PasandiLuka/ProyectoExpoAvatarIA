@@ -56,7 +56,24 @@
         }
         @if (!string.IsNullOrEmpty(_lastScreenshotUrl) && !_isCapturing)
         {
-            <div class="text-xs mt-1 text-green-400 text-center">Foto subida</div>
+            <div class="text-xs mt-1 text-green-400 text-center">Foto guardada</div>
+        }
+        @if (!string.IsNullOrEmpty(_lastScreenshotUrl) && !_isCapturing)
+        {
+            <div class="text-xs mt-1 text-center">
+                @switch (_driveSyncState)
+                {
+                    case DriveSyncState.Pending:
+                        <span title="Sincronizando con Drive...">&#x2601;&#xFE0F;</span>
+                        break;
+                    case DriveSyncState.Synced:
+                        <span title="Sincronizada con Drive">&#x2705;</span>
+                        break;
+                    case DriveSyncState.Failed:
+                        <span title="Solo guardada localmente">&#x26A0;&#xFE0F;</span>
+                        break;
+                }
+            </div>
         }
         @if (!string.IsNullOrEmpty(_lastError) && !_isCapturing)
         {
@@ -160,6 +177,12 @@
 
     private CancellationTokenSource? _captureCts;
     private Action<bool, string>? _screenshotHandler;
+    private Action<string, bool, string>? _driveSyncHandler;
+
+    private enum DriveSyncState { None, Pending, Synced, Failed }
+    private DriveSyncState _driveSyncState = DriveSyncState.None;
+    private string _lastDriveFilename = "";
+    private string _lastDriveUrl = "";
 
     private double TorsoSlider;
     private double HeadSlider;
@@ -225,6 +248,25 @@
     {
         await TrackingService.Connect();
         _ = JS.InvokeVoidAsync("avatarCamera.initDisplayCaptureEarly");
+
+        _driveSyncHandler = (filename, success, driveUrl) =>
+        {
+            _ = InvokeAsync(() =>
+            {
+                if (success)
+                {
+                    _driveSyncState = DriveSyncState.Synced;
+                    _lastDriveUrl = driveUrl;
+                }
+                else
+                {
+                    _driveSyncState = DriveSyncState.Failed;
+                }
+                _lastDriveFilename = filename;
+                StateHasChanged();
+            });
+        };
+        TrackingService.OnDriveSyncResult += _driveSyncHandler;
     }
 
     public void Dispose()
@@ -233,6 +275,8 @@
         TrackingService.OnLandmarksReceived -= HandleLandmarkReceived;
         TrackingService.OnFpsChanged -= HandleFpsChanged;
         TrackingService.OnConnectionChanged -= HandleConnectionChanged;
+        if (_driveSyncHandler != null)
+            TrackingService.OnDriveSyncResult -= _driveSyncHandler;
         _landmarkTimeout?.Dispose();
     }
 
@@ -400,7 +444,7 @@
         try
         {
             var base64 = await CameraService.CaptureScreenshot();
-            _captureStatus = "Subiendo a Drive...";
+            _captureStatus = "Guardando...";
             StateHasChanged();
 
             var resultTcs = new TaskCompletionSource<bool>();
@@ -411,8 +455,8 @@
                 if (captureCts.IsCancellationRequested) return;
                 TrackingService.OnScreenshotResult -= handler;
                 _screenshotHandler = null;
-                if (success) { _lastScreenshotUrl = url; _lastError = ""; }
-                else { _lastError = "Error al subir la foto"; _lastScreenshotUrl = ""; }
+                if (success) { _lastScreenshotUrl = url; _lastError = ""; _driveSyncState = DriveSyncState.Pending; }
+                else { _lastError = "Error al guardar la foto"; _lastScreenshotUrl = ""; }
                 _isCapturing = false;
                 _isCountingDown = false;
                 captureCts.Cancel();
@@ -462,6 +506,7 @@
         _isCountingDown = false;
         _lastScreenshotUrl = url ?? "";
         _lastError = error ?? "";
+        _driveSyncState = DriveSyncState.None;
         StateHasChanged();
     }
 
